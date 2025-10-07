@@ -1,0 +1,65 @@
+name: rider_pay
+description: "A new Flutter project."
+
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.8.1
+
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  flutter_riverpod: ^2.6.1
+  flutter_screenutil: ^5.9.3
+  shared_preferences:
+  intl: ^0.20.2
+  fluttertoast: ^8.2.12
+  pinput: ^5.0.1
+  cached_network_image: ^3.4.1
+#  socket_io_client: ^3.1.2
+  flutter_html:
+  flutter_localizations:
+    sdk: flutter
+  carousel_slider: ^5.1.1
+  google_maps_flutter: ^2.13.1
+  geolocator: ^14.0.2
+  geocoding: ^4.0.0
+  firebase_core: ^4.1.1
+  cloud_firestore: ^6.0.2
+
+
+
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  generate: true
+  uses-material-design: true
+
+  fonts:
+    - family: Poppins
+      fonts:
+        - asset: assets/fonts/Inter_24pt-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Inter_24pt-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Inter_24pt-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Inter_24pt-Bold.ttf
+          weight: 700
+  assets:
+    - assets/
+    - assets/icon/
+    - assets/fonts/
+    - assets/sound/
+    - assets/images/
+
+

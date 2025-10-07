@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "719956929559",
+    "project_id": "shubhride-9b16d",
+    "storage_bucket": "shubhride-9b16d.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:719956929559:android:aceb9a8d97f29759654052",
+        "android_client_info": {
+          "package_name": "com.example.shubh_driver"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXYeYas0d6RcJrf2hTglxlBpwoHF8Y4w0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:719956929559:android:f14c71015c25d39d654052",
+        "android_client_info": {
+          "package_name": "com.rider_pay.rider_pay"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXYeYas0d6RcJrf2hTglxlBpwoHF8Y4w0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
