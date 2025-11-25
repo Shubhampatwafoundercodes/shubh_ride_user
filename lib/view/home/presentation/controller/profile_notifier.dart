@@ -1,8 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:rider_pay/res/format/date_time_formater.dart';
-import 'package:rider_pay/view/home/data/model/get_profile_model.dart';
-import 'package:rider_pay/view/home/domain/repo/profile_repo.dart';
-import 'package:rider_pay/view/share_pref/user_provider.dart';
+import 'package:rider_pay_user/res/format/date_time_formater.dart';
+import 'package:rider_pay_user/view/home/data/model/get_profile_model.dart';
+import 'package:rider_pay_user/view/home/domain/repo/profile_repo.dart';
+import 'package:rider_pay_user/view/share_pref/user_provider.dart';
 
 class ProfileState {
   final bool isLoadingProfile;
@@ -42,7 +42,7 @@ class ProfileNotifier extends StateNotifier<ProfileState> {
 
   /// 🔹 Get Profile
   Future<void> getProfile() async {
-    state = state.copyWith(isLoadingProfile: true, profile: null);
+    state = state.copyWith(isLoadingProfile: true,);
     try {
       final userId = ref.read(userProvider)?.id;
       if (userId == null) {
@@ -53,8 +53,11 @@ class ProfileNotifier extends StateNotifier<ProfileState> {
       if (res.code == 200) {
         state = state.copyWith(isLoadingProfile: false, profile: res);
       } else {
+        // state = state.copyWith(isLoadingProfile: false,profile: null );
         state = state.copyWith(isLoadingProfile: false, );
+
       }
+
     } catch (e) {
       state = state.copyWith(isLoadingProfile: false, );
     }
@@ -66,7 +69,6 @@ class ProfileNotifier extends StateNotifier<ProfileState> {
     try {
       // API call ke liye sirf updated field bhej rahe
       final res = await _repo.updateProfile({key: value});
-
       if (res["code"] == 200) {
         getProfile();
         state = state.copyWith(isUpdatingProfile: false,);
@@ -100,7 +102,7 @@ class ProfileNotifier extends StateNotifier<ProfileState> {
   String get email => state.profile?.data?.email ?? "N/A";
   String get gender => state.profile?.data?.gender ?? "N/A";
   String get dob {
-    final dobStr = state.profile?.data?.bod;
+    final dobStr = state.profile?.data?.dob;
     if (dobStr == null) return "--";
     try {
       return DateTimeFormat.formatDate(dobStr.toString());
@@ -112,6 +114,7 @@ class ProfileNotifier extends StateNotifier<ProfileState> {
   String get profilePic => state.profile?.data?.profile ?? "";
   String get emergencyContact => state.profile?.data?.emergencyContact??"";
   String get inviteCode => state.profile?.data?.inviteCode ?? "--";
+  int get otp => state.profile?.data?.otp ?? 1234;
   String get memberSince {
     final created = state.profile?.data?.createdAt;
     if (created == null) return "--";

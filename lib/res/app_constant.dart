@@ -1,12 +1,12 @@
 import 'dart:ui';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:rider_pay/generated/assets.dart';
+import 'package:rider_pay_user/generated/assets.dart';
 
 import 'app_device.dart';
 
 class AppConstant {
-  static const String appName = "SHUBH RIDE";
+  static const String appName = "RiderPay";
   static const String appVersion = '1.0.0';
   static final String appLogoLightMode = Assets.imagesAppLogoLightMode;
 

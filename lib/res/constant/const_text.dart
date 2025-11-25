@@ -1,9 +1,8 @@
-
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:rider_pay/res/app_color.dart' show AppColor, AppColorsExt;
-import 'package:rider_pay/res/app_constant.dart';
-
+import 'package:rider_pay_user/res/app_color.dart' show AppColorsExt;
+import 'package:rider_pay_user/res/app_constant.dart';
 
 class ConstText extends StatelessWidget {
   final String text;
@@ -39,7 +38,10 @@ class ConstText extends StatelessWidget {
     this.strikethrough,
     this.foreground,
     this.fontFamily,
-    this.decorationColor, this.fontStyle, this.letterHeight, this.textScaleFactor,
+    this.decorationColor,
+    this.fontStyle,
+    this.letterHeight,
+    this.textScaleFactor,
   });
 
   @override
@@ -49,13 +51,13 @@ class ConstText extends StatelessWidget {
       maxLines: maxLine,
       textAlign: textAlign ?? TextAlign.start,
       style: TextStyle(
-        height:letterHeight ,
+        height: letterHeight,
         fontSize: fontSize ?? AppConstant.fontSizeTwo,
         fontWeight: fontWeight ?? AppConstant.regular,
         color: color ?? context.textSecondary,
         wordSpacing: wordSpacing,
         foreground: foreground,
-        fontStyle:fontStyle,
+        fontStyle: fontStyle,
         letterSpacing: letterSpacing,
         decoration: decoration,
         decorationColor: decorationColor,
@@ -66,55 +68,96 @@ class ConstText extends StatelessWidget {
   }
 }
 
-
 class DoubleText extends StatelessWidget {
+  /// Static part (normal text)
   final String firstText;
-  final String secondText;
-  final VoidCallback onTap;
-  final double? firstSize;
-  final double? secondSize;
+
+  /// First tappable text (optional)
+  final String? tappableText1;
+
+  /// Second tappable text (optional)
+  final String? tappableText2;
+
+  final String? text3;
+
+  /// Tap actions (optional)
+  final VoidCallback? onTap1;
+  final VoidCallback? onTap2;
+
+  /// Styling
+  final double? fontSize;
   final Color? firstColor;
-  final Color? secondColor;
-  final FontWeight? firstWeight;
-  final FontWeight? secondWeight;
+  final Color? tappableColor;
+  final FontWeight? fontWeight;
 
   const DoubleText({
     super.key,
     required this.firstText,
-    required this.secondText,
-    required this.onTap,
-    this.firstSize,
-    this.secondSize,
+    this.tappableText1,
+    this.tappableText2,
+    this.onTap1,
+    this.onTap2,
+    this.fontSize,
     this.firstColor,
-    this.secondColor,
-    this.firstWeight,
-    this.secondWeight,
+    this.tappableColor,
+    this.fontWeight,
+    this.text3,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        ConstText(
-          text: firstText,
-          fontSize: firstSize ?? AppConstant.fontSizeTwo,
-          color: firstColor??context.textPrimary,
-          fontWeight: firstWeight,
-        ),
-         SizedBox(width: 4.w),
-        GestureDetector(
-          onTap: onTap,
-          child: ConstText(
-            text: secondText,
-            fontSize: secondSize??AppConstant.fontSizeOne,
-            color: secondColor??context.primary,
-            fontWeight: secondWeight ?? FontWeight.bold,
-            // decoration: TextDecoration.underline,
-            // decorationColor: AppColor.primary,
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 8.w),
+      child: RichText(
+        textAlign: TextAlign.center,
+        text: TextSpan(
+          style: TextStyle(
+            fontSize: fontSize ?? AppConstant.fontSizeZero,
+            color: firstColor ?? context.textPrimary,
+            fontWeight: fontWeight ?? FontWeight.normal,
+            fontFamily: "Poppins",
           ),
+          children: [
+            TextSpan(text: firstText),
+
+            if (tappableText1 != null) ...[
+              const TextSpan(text: " "),
+              TextSpan(
+                text: tappableText1,
+                style: TextStyle(
+                  color: tappableColor ?? context.primary,
+                  fontWeight: AppConstant.semiBold,
+                  fontSize: AppConstant.fontSizeZero,
+                ),
+                recognizer: onTap1 != null
+                    ? (TapGestureRecognizer()..onTap = onTap1)
+                    : null,
+              ),
+            ],
+
+            if (tappableText2 != null) ...[
+              TextSpan(
+                text: text3 ?? " and ",
+                style: TextStyle(
+                  color: tappableColor ?? context.textPrimary,
+                  fontSize: AppConstant.fontSizeZero,
+                ),
+              ),
+              TextSpan(
+                text: tappableText2,
+                style: TextStyle(
+                  color: tappableColor ?? context.primary,
+                  fontWeight: AppConstant.medium,
+                  fontSize: AppConstant.fontSizeZero,
+                ),
+                recognizer: onTap2 != null
+                    ? (TapGestureRecognizer()..onTap = onTap2)
+                    : null,
+              ),
+            ],
+          ],
         ),
-      ],
+      ),
     );
   }
 }

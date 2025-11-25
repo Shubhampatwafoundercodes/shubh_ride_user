@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:rider_pay/l10n/app_localizations.dart';
-import 'package:rider_pay/res/app_btn.dart';
-import 'package:rider_pay/res/app_color.dart';
-import 'package:rider_pay/res/app_constant.dart';
-import 'package:rider_pay/res/app_padding.dart';
-import 'package:rider_pay/res/app_size.dart';
-import 'package:rider_pay/res/constant/const_back_btn.dart';
-import 'package:rider_pay/res/constant/const_drop_down.dart';
-import 'package:rider_pay/res/constant/const_text.dart';
-import 'package:rider_pay/res/constant/custom_slider_dialog.dart';
-import 'package:rider_pay/view/language/language_controller.dart';
-import 'package:rider_pay/view/widget/success_reject_popup.dart';
+import 'package:rider_pay_user/l10n/app_localizations.dart';
+import 'package:rider_pay_user/res/app_color.dart';
+import 'package:rider_pay_user/res/app_constant.dart';
+import 'package:rider_pay_user/res/app_padding.dart';
+import 'package:rider_pay_user/res/app_size.dart';
+import 'package:rider_pay_user/res/constant/const_back_btn.dart';
+import 'package:rider_pay_user/res/constant/const_drop_down.dart';
+import 'package:rider_pay_user/res/constant/const_text.dart';
+import 'package:rider_pay_user/view/language/language_controller.dart';
 
 class LanguageScreen extends ConsumerWidget {
   const LanguageScreen({super.key});
@@ -21,11 +18,11 @@ class LanguageScreen extends ConsumerWidget {
     final tr = AppLocalizations.of(context)!;
 
     /// Available languages (from provider)
+
     final languages = ref.watch(availableLanguagesProvider);
 
     /// Current selected language name
     final selectedLanguage = ref.watch(currentLanguageProvider);
-    print("object: ${tr.language}");
     return Scaffold(
       body: SafeArea(
         child: Padding(

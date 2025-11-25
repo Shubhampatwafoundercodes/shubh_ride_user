@@ -38,11 +38,10 @@ class DateTimeFormat {
   static String formatFullDateTime(String? dateTimeStr) {
     if (dateTimeStr == null || dateTimeStr.isEmpty) return "--";
     try {
-      final inputFormat = DateFormat("yyyy-MM-dd HH:mm:ss");
+      final dateTime = DateTime.parse(dateTimeStr).toLocal();
       final outputFormat = DateFormat("MMMM d, yyyy h:mm a");
-      final dateTime = inputFormat.parse(dateTimeStr);
       return outputFormat.format(dateTime);
-    } catch (_) {
+    } catch (e) {
       return "--";
     }
   }

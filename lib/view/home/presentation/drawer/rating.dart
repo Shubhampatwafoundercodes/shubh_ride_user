@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:rider_pay/l10n/app_localizations.dart';
-import 'package:rider_pay/res/app_color.dart';
-import 'package:rider_pay/view/home/presentation/drawer/drawer_screen.dart';
-import 'package:rider_pay/view/home/presentation/widget/common_btn_with_title.dart';
-import 'package:rider_pay/view/widget/help_drop_down_widget.dart';
+import 'package:rider_pay_user/l10n/app_localizations.dart';
+import 'package:rider_pay_user/res/app_color.dart';
+// ignore: unused_import
+import 'package:rider_pay_user/view/home/presentation/drawer/drawer_screen.dart';
+import 'package:rider_pay_user/view/home/presentation/widget/common_btn_with_title.dart';
+import 'package:rider_pay_user/view/widget/help_drop_down_widget.dart';
 
 class Rating extends StatelessWidget {
   const Rating({super.key});

@@ -1,6 +1,7 @@
+// ignore: unused_import
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:rider_pay/view/home/domain/repo/profile_repo.dart';
+import 'package:rider_pay_user/view/home/domain/repo/profile_repo.dart';
 
 class CmsState {
   final bool isLoading;
@@ -28,7 +29,7 @@ class CmsNotifier extends StateNotifier<CmsState> {
   CmsNotifier(this._repo) : super(CmsState.initial());
 
   Future<void> getCmsTermConditionApi() async {
-    state = state.copyWith(isLoading: true, );
+    state = state.copyWith(isLoading: true,);
     try {
       final res = await _repo.getCmsPages();
       if (res["code"] == 200) {
@@ -36,7 +37,7 @@ class CmsNotifier extends StateNotifier<CmsState> {
       } else {
         state = state.copyWith(
           isLoading: false,
-          pages: null,
+          // pages: null,
         );
       }
     } catch (e) {

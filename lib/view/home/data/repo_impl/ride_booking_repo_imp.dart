@@ -1,8 +1,8 @@
-import 'package:rider_pay/helper/network/api_exception.dart';
-import 'package:rider_pay/helper/network/base_api_service.dart';
-import 'package:rider_pay/res/api_urls.dart';
-import 'package:rider_pay/view/home/data/model/ride_history_booking_model.dart';
-import 'package:rider_pay/view/home/domain/repo/ride_booking_repo.dart';
+import 'package:rider_pay_user/helper/network/api_exception.dart';
+import 'package:rider_pay_user/helper/network/base_api_service.dart';
+import 'package:rider_pay_user/res/api_urls.dart';
+import 'package:rider_pay_user/view/home/data/model/ride_history_booking_model.dart';
+import 'package:rider_pay_user/view/home/domain/repo/ride_booking_repo.dart';
 
 class RideBookingImp implements RideBookingRepo {
   final BaseApiServices api;

@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:rider_pay/view/home/data/model/vehicle_type_model.dart';
-import 'package:rider_pay/view/home/domain/repo/vehicle_type_repo.dart';
+import 'package:rider_pay_user/view/home/data/model/vehicle_type_model.dart';
+import 'package:rider_pay_user/view/home/domain/repo/vehicle_type_repo.dart';
 
 class VehicleTypeState {
   final bool isLoading;

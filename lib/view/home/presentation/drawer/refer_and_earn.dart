@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:rider_pay/l10n/app_localizations.dart';
-import 'package:rider_pay/res/app_color.dart';
-import 'package:rider_pay/res/app_padding.dart';
-import 'package:rider_pay/res/constant/const_text.dart';
-import 'package:rider_pay/view/home/presentation/drawer/drawer_screen.dart';
-import 'package:rider_pay/view/home/presentation/drawer/profile/wallet_screen.dart' show SectionHeader;
-import 'package:rider_pay/view/home/presentation/widget/common_btn_with_title.dart' show CommonBackBtnWithTitle;
-import 'package:rider_pay/view/home/presentation/widget/gradient_white_box.dart';
-import 'package:rider_pay/view/home/provider/provider.dart';
+import 'package:rider_pay_user/l10n/app_localizations.dart';
+import 'package:rider_pay_user/res/app_color.dart';
+import 'package:rider_pay_user/res/app_padding.dart';
+import 'package:rider_pay_user/res/constant/const_text.dart';
+import 'package:rider_pay_user/view/home/presentation/drawer/profile/wallet_screen.dart'
+    show SectionHeader;
+import 'package:rider_pay_user/view/home/presentation/widget/common_btn_with_title.dart'
+    show CommonBackBtnWithTitle;
+import 'package:rider_pay_user/view/home/presentation/widget/gradient_white_box.dart';
+import 'package:rider_pay_user/view/home/provider/provider.dart';
+// ignore: deprecated_member_use
+import 'package:share_plus/share_plus.dart' show Share;
 
 class ReferAndEarnScreen extends StatelessWidget {
   const ReferAndEarnScreen({super.key});
@@ -26,9 +29,7 @@ class ReferAndEarnScreen extends StatelessWidget {
             /// Top Bar
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                CommonBackBtnWithTitle(text: t.referAndEarn),
-              ],
+              children: [CommonBackBtnWithTitle(text: t.referAndEarn)],
             ),
 
             Expanded(
@@ -41,7 +42,11 @@ class ReferAndEarnScreen extends StatelessWidget {
                   GradientContainer(
                     child: Column(
                       children: [
-                        Icon(Icons.card_giftcard, size: 48, color: context.primary),
+                        Icon(
+                          Icons.card_giftcard,
+                          size: 48,
+                          color: context.primary,
+                        ),
                         SizedBox(height: 8.h),
                         ConstText(
                           text: t.inviteFriendsEarn,
@@ -62,30 +67,47 @@ class ReferAndEarnScreen extends StatelessWidget {
                   SizedBox(height: 20.h),
 
                   /// Referral Code
-                  GradientContainer(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Consumer(
-                          builder: (context,ref,_) {
-                            final profileNotifier = ref.watch(profileProvider);
-                            final referCode=profileNotifier.profile?.data?.inviteCode??"---";
-                            return ConstText(
-                              text:referCode.toString(),
+                  Consumer(
+                    builder: (context, ref, _) {
+                      final profileNotifier = ref.watch(profileProvider);
+                      final referCode =
+                          profileNotifier.profile?.data?.inviteCode ?? "---";
+                      return GradientContainer(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            ConstText(
+                              text: referCode.toString(),
                               fontWeight: FontWeight.bold,
                               fontSize: 16.sp,
-                            );
-                          }
+                            ),
+                            OutlinedButton.icon(
+                              onPressed: () async {
+                                final message =
+                                    '''
+🚖 Invite & Earn Rewards!
+
+Use my referral code **$referCode** while signing up and get instant rewards on your first ride! 🎉
+
+Download the app now 👇
+https://play.google.com/store/apps/details?id=com.yourapp.package
+
+Let's ride together! 🚗💨
+''';
+
+                                // ignore: deprecated_member_use
+                                await Share.share(
+                                  message,
+                                  subject: 'Join me on Shubh Ride!',
+                                );
+                              },
+                              icon: const Icon(Icons.share),
+                              label: ConstText(text: t.share),
+                            ),
+                          ],
                         ),
-                        OutlinedButton.icon(
-                          onPressed: () {
-                            // Share logic here
-                          },
-                          icon: const Icon(Icons.share),
-                          label: ConstText(text: t.share),
-                        )
-                      ],
-                    ),
+                      );
+                    },
                   ),
 
                   SizedBox(height: 20.h),
@@ -124,10 +146,10 @@ class ReferAndEarnScreen extends StatelessWidget {
                         ),
                       ),
                     ],
-                  )
+                  ),
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),

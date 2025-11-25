@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:rider_pay/generated/assets.dart';
-import 'package:rider_pay/view/map/provider/map_provider.dart';
-import 'package:rider_pay/view/widget/location_on_popup.dart';
+import 'package:rider_pay_user/generated/assets.dart';
+import 'package:rider_pay_user/view/map/provider/map_provider.dart';
+import 'package:rider_pay_user/view/widget/location_on_popup.dart';
 import '../../utils/routes/routes_name.dart';
 
 class LocationOnScreen extends ConsumerStatefulWidget {

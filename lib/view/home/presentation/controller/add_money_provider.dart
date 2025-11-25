@@ -1,3 +1,4 @@
+// ignore: unused_import
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -7,9 +8,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 // });
 
 /// TextEditingController provider (autoDispose so memory leak na ho)
-final amountControllerProvider = Provider.autoDispose<TextEditingController>(
-      (ref) => TextEditingController(),
-);
+
 
 /// Preset amounts provider (future me backend se bhi aayenge to easy hoga)
 final presetAmountsProvider = Provider<List<int>>((ref) {

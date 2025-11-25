@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:rider_pay/generated/assets.dart';
-import 'package:rider_pay/view/home/data/model/app_info_model.dart';
-import 'package:rider_pay/view/home/domain/repo/app_Info_repo.dart';
-import 'package:rider_pay/view/onboarding/model/onboard_model.dart';
+import 'package:rider_pay_user/generated/assets.dart';
+import 'package:rider_pay_user/view/home/data/model/app_info_model.dart';
+import 'package:rider_pay_user/view/home/domain/repo/app_Info_repo.dart';
+import 'package:rider_pay_user/view/onboarding/model/onboard_model.dart';
 
 class AppInfoState {
   final bool isLoading;
@@ -57,13 +57,11 @@ class AppInfoNotifier extends StateNotifier<AppInfoState> {
 
   // 📌 API call
   Future<void> loadAppInfo() async {
-    print("loadAppInfo");
 
     state = state.copyWith(isLoading: true,);
     try {
       final res = await repo.fetchAppInfo();
       if (res.code == 200) {
-        print("loadAppInfo");
         state = state.copyWith(isLoading: false, appInfoModel: res);
       }
     } catch (e) {

@@ -1,10 +1,10 @@
 // import 'package:flutter/material.dart';
-// import 'package:rider_pay/main.dart';
-// import 'package:rider_pay/res/app_border.dart';
-// import 'package:rider_pay/res/app_color.dart';
-// import 'package:rider_pay/res/app_constant.dart';
-// import 'package:rider_pay/res/app_size.dart';
-// import 'package:rider_pay/res/constant/const_text.dart';
+// import 'package:rider_pay_user/main.dart';
+// import 'package:rider_pay_user/res/app_border.dart';
+// import 'package:rider_pay_user/res/app_color.dart';
+// import 'package:rider_pay_user/res/app_constant.dart';
+// import 'package:rider_pay_user/res/app_size.dart';
+// import 'package:rider_pay_user/res/constant/const_text.dart';
 //
 //
 // class CommonDropdown<T> extends StatefulWidget {
@@ -107,12 +107,12 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:rider_pay/main.dart';
-import 'package:rider_pay/res/app_border.dart';
-import 'package:rider_pay/res/app_color.dart';
-import 'package:rider_pay/res/app_constant.dart';
-import 'package:rider_pay/res/app_padding.dart';
-import 'package:rider_pay/res/constant/const_text.dart';
+import 'package:rider_pay_user/main.dart';
+import 'package:rider_pay_user/res/app_border.dart';
+import 'package:rider_pay_user/res/app_color.dart';
+import 'package:rider_pay_user/res/app_constant.dart';
+import 'package:rider_pay_user/res/app_padding.dart';
+import 'package:rider_pay_user/res/constant/const_text.dart';
 
 class CommonDropdown<T> extends StatefulWidget {
   final String? title;                        // Title label

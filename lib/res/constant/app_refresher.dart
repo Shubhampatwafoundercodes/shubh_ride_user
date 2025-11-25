@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rider_pay/res/app_color.dart';
+import 'package:rider_pay_user/res/app_color.dart';
 
 class AppRefresher extends StatelessWidget {
   final Future<void> Function() onRefresh;

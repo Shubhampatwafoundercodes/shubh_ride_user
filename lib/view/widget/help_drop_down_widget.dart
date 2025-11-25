@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart' show ConsumerWidget, WidgetRef;
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:rider_pay/main.dart';
-import 'package:rider_pay/res/app_border.dart';
-import 'package:rider_pay/res/app_color.dart';
-import 'package:rider_pay/res/app_size.dart' show AppSizes;
-import 'package:rider_pay/res/constant/const_drop_down.dart';
-import 'package:rider_pay/res/constant/const_text.dart';
-import 'package:rider_pay/utils/routes/routes_name.dart';
+import 'package:rider_pay_user/main.dart';
+import 'package:rider_pay_user/res/app_border.dart';
+import 'package:rider_pay_user/res/app_color.dart';
+import 'package:rider_pay_user/res/app_size.dart' show AppSizes;
+import 'package:rider_pay_user/res/constant/const_drop_down.dart';
+import 'package:rider_pay_user/res/constant/const_text.dart';
+import 'package:rider_pay_user/utils/routes/routes_name.dart';
 
 import '../../l10n/app_localizations.dart' show AppLocalizations;
 
@@ -25,7 +25,7 @@ class HelpDropDownWidget extends ConsumerWidget {
       valueKey: (v) => v,
       onChanged: (val) {
         if (val == loc.help) {
-          // Navigate to Help page
+          Navigator.pushNamed(context, RouteName.help);
         } else if (val == loc.language) {
           Navigator.pushNamed(context, RouteName.language);
         }else if(val == loc.theme ){

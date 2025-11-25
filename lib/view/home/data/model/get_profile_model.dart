@@ -27,7 +27,7 @@ class Data {
     required this.phone,
     required this.gender,
     required this.otp,
-    required this.bod,
+    required this.dob,
     required this.emergencyContact,
     required this.inviteCode,
     required this.profile,
@@ -42,7 +42,7 @@ class Data {
   final String? phone;
   final String? gender;
   final int? otp;
-  final DateTime? bod;
+  final DateTime? dob;
   final String? emergencyContact;
   final String? inviteCode;
   final String? profile;
@@ -58,7 +58,7 @@ class Data {
       phone: json["phone"],
       gender: json["gender"],
       otp: json["otp"],
-      bod: DateTime.tryParse(json["bod"] ?? ""),
+      dob: DateTime.tryParse(json["dob"] ?? ""),
       emergencyContact: json["emergencyContact"],
       inviteCode: json["inviteCode"],
       profile: json["profile"],

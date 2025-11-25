@@ -1,8 +1,8 @@
 
 import 'package:flutter/material.dart';
-import 'package:rider_pay/main.dart';
-import 'package:rider_pay/res/app_color.dart';
-import 'package:rider_pay/res/app_padding.dart';
+import 'package:rider_pay_user/main.dart';
+import 'package:rider_pay_user/res/app_color.dart';
+import 'package:rider_pay_user/res/app_padding.dart';
 
 
 class ConstPopUp extends StatelessWidget {

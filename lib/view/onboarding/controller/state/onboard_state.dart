@@ -1,6 +1,6 @@
 //
 // // ignore: unused_import
-// import 'package:rider_pay/view/onboarding/model/onboard_model.dart';
+// import 'package:rider_pay_user/view/onboarding/model/onboard_model.dart';
 //
 // class OnboardingState {
 //   final int currentPage;

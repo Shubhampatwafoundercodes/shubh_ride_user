@@ -9,9 +9,14 @@ class Assets {
   static const String fontsInter24ptRegular = 'assets/fonts/Inter_24pt-Regular.ttf';
   static const String fontsInter24ptSemiBold = 'assets/fonts/Inter_24pt-SemiBold.ttf';
   static const String iconAutoIc = 'assets/icon/auto_ic.png';
+  static const String iconAutoMarker = 'assets/icon/auto_marker.png';
   static const String iconBikeIc = 'assets/icon/bike_ic.png';
+  static const String iconBikeMarker = 'assets/icon/bike_marker.png';
+  static const String iconCabMarker = 'assets/icon/cab_marker.png';
   static const String iconCancelIc = 'assets/icon/cancel_ic.png';
   static const String iconCarIc = 'assets/icon/car_ic.png';
+  static const String iconCarMarker = 'assets/icon/car_marker.png';
+  static const String iconCarMarkerYe = 'assets/icon/car_marker_ye.png';
   static const String iconCash = 'assets/icon/cash.png';
   static const String iconCircleLocation = 'assets/icon/circle_location.png';
   static const String iconDragablePickupMarker = 'assets/icon/dragable_pickup_marker.png';

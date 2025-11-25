@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:rider_pay/l10n/app_localizations.dart';
-import 'package:rider_pay/res/app_btn.dart';
-import 'package:rider_pay/res/app_color.dart';
-import 'package:rider_pay/res/app_constant.dart';
-import 'package:rider_pay/res/app_padding.dart';
-import 'package:rider_pay/res/app_size.dart';
-import 'package:rider_pay/res/constant/common_bottom_sheet.dart';
-import 'package:rider_pay/res/constant/const_text.dart';
-import 'package:rider_pay/utils/routes/routes_name.dart';
-import 'package:rider_pay/view/home/presentation/widget/common_btn_with_title.dart';
-import 'package:rider_pay/view/home/presentation/widget/gradient_white_box.dart';
-import 'package:rider_pay/view/home/provider/provider.dart';
+import 'package:rider_pay_user/generated/assets.dart';
+import 'package:rider_pay_user/l10n/app_localizations.dart';
+import 'package:rider_pay_user/main.dart';
+import 'package:rider_pay_user/res/app_border.dart';
+import 'package:rider_pay_user/res/app_color.dart';
+import 'package:rider_pay_user/res/app_constant.dart';
+import 'package:rider_pay_user/res/app_padding.dart';
+import 'package:rider_pay_user/res/app_size.dart';
+import 'package:rider_pay_user/res/constant/const_text.dart';
+import 'package:rider_pay_user/utils/routes/routes_name.dart';
+import 'package:rider_pay_user/utils/utils.dart';
+import 'package:rider_pay_user/view/home/presentation/widget/common_btn_with_title.dart';
+import 'package:rider_pay_user/view/home/presentation/widget/gradient_white_box.dart';
+import 'package:rider_pay_user/view/home/provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class DrawerContent extends StatelessWidget {
   const DrawerContent({super.key});
@@ -34,33 +37,6 @@ class DrawerContent extends StatelessWidget {
               child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    // Padding(
-                    //   padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                    //   child: Container(
-                    //     decoration: BoxDecoration(
-                    //       color: context.popupBackground, // light/dark dono ke liye
-                    //       borderRadius: BorderRadius.circular(16.r),
-                    //       boxShadow: [
-                    //         BoxShadow(
-                    //           color: context.greyMedium.withAlpha(50), // soft shadow
-                    //           blurRadius: 5,
-                    //           spreadRadius: 1,
-                    //           offset: const Offset(0, 2),
-                    //         ),
-                    //         BoxShadow(
-                    //           color: context.white.withAlpha(50), // white glow feel
-                    //           blurRadius: 2,
-                    //           spreadRadius: 0,
-                    //           offset: const Offset(-1, -1),
-                    //         ),
-                    //       ],
-                    //     ),
-                    //     child: Padding(
-                    //       padding: EdgeInsets.all(16.r),
-                    //       child:
-                    //     ),
-                    //   ),
-                    // ),
                     Padding(
                       padding: AppPadding.screenPaddingH,
                       child: GradientContainer(child: Column(
@@ -111,22 +87,22 @@ class DrawerContent extends StatelessWidget {
 
 
                           SizedBox(height: 14.h),
-                          Divider(color: context.greyMedium, thickness: 1),
-                          SizedBox(height: 10.h),
+                          // Divider(color: context.greyMedium, thickness: 1),
+                          // SizedBox(height: 10.h),
                           /// Rating Row
-                          Row(
-                            children: [
-                              Icon(Icons.star, color: AppColor.primary, size: 22.h),
-                              SizedBox(width: 8.w),
-                              ConstText(
-                                text: "5.00 My Rating",
-                                fontWeight: AppConstant.semiBold,
-                              ),
-                              const Spacer(),
-                              Icon(Icons.arrow_forward_ios,
-                                  size: 16.h, color: context.textSecondary),
-                            ],
-                          )
+                          // Row(
+                          //   children: [
+                          //     Icon(Icons.star, color: AppColor.primary, size: 22.h),
+                          //     SizedBox(width: 8.w),
+                          //     ConstText(
+                          //       text: "5.00 My Rating",
+                          //       fontWeight: AppConstant.semiBold,
+                          //     ),
+                          //     const Spacer(),
+                          //     Icon(Icons.arrow_forward_ios,
+                          //         size: 16.h, color: context.textSecondary),
+                          //   ],
+                          // )
                         ],
                       ),),
                     ),
@@ -134,8 +110,8 @@ class DrawerContent extends StatelessWidget {
                     SizedBox(height: 20.h),
 
                     /// Drawer Menu Items
-                    DrawerItem(icon: Icons.help_outline, label:t.help
-                    ,onTap: (){
+                    DrawerItem(icon: Icons.help_outline, label:t.help,
+                      onTap: (){
                       Navigator.pushNamed(context, RouteName.help);
                       },
                     ),
@@ -158,10 +134,10 @@ class DrawerContent extends StatelessWidget {
                         subLabel: "Get ₹50"  ,onTap: (){
                       Navigator.pushNamed(context, RouteName.referAndEarn);
                     },),
-                    DrawerDivider(),
-                    DrawerItem(icon: Icons.redeem, label: t.myRewards  ,onTap: (){
-                      Navigator.pushNamed(context, RouteName.myReward);
-                    },),
+                    // DrawerDivider(),
+                    // DrawerItem(icon: Icons.redeem, label: t.myRewards  ,onTap: (){
+                    //   Navigator.pushNamed(context, RouteName.myReward);
+                    // },),
                     DrawerDivider(),
                     DrawerItem(
                       icon: Icons.notifications_outlined,
@@ -189,9 +165,9 @@ class DrawerContent extends StatelessWidget {
                     //   },
                     // ),
                     // DrawerDivider(),
-                    DrawerItem(
-                        icon: Icons.confirmation_num_outlined,
-                        label: t.powerPass),
+                    // DrawerItem(
+                    //     icon: Icons.confirmation_num_outlined,
+                    //     label: t.powerPass),
                     DrawerDivider(),
                     // DrawerItem(
                     //     icon: Icons.monetization_on_outlined,
@@ -199,7 +175,7 @@ class DrawerContent extends StatelessWidget {
                     // DrawerDivider(),
                     DrawerItem(
                       icon: Icons.settings_outlined,
-                      label: "Setting",
+                      label:t.settings,
                       onTap: () {
                         Navigator.pushNamed(context, RouteName.settingScreen);
                       },
@@ -212,6 +188,91 @@ class DrawerContent extends StatelessWidget {
                 ),
               ),
             ),
+            Consumer(
+              builder: (context, ref, _) {
+                final userP = ref.watch(appInfoNotifierProvider);
+                final driverAppUrl = userP.appInfoModel?.data?.driverAppUrl ?? "";
+
+                return GestureDetector(
+                  onTap: () async {
+                    if (driverAppUrl.isNotEmpty) {
+                      final Uri url = Uri.parse(driverAppUrl);
+                      if (await canLaunchUrl(url)) {
+                        await launchUrl(
+                          url,
+                          mode: LaunchMode.externalApplication,
+                        );
+                      } else {
+
+                        toastMsg("Could not open Play Store link");
+                      }
+                    } else {
+                      toastMsg("App link not available");
+                    }
+                  },
+                  child: Container(
+                    margin: AppPadding.screenPadding,
+                    decoration: BoxDecoration(
+                      borderRadius: AppBorders.mediumRadius,
+                      border: Border.all(
+                        color: Colors.lightBlue.withAlpha(100),
+                        width: 1,
+                      ),
+                    ),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.only(left: 30.w),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              ConstText(
+                                text: t.driver,
+                                color: context.textSecondary,
+                                fontWeight: AppConstant.bold,
+                                fontSize: AppConstant.fontSizeLarge,
+                              ),
+                              ConstText(
+                                text: t.getEarning,
+                                color: Colors.blue,
+                                fontSize: AppConstant.fontSizeOne,
+                                fontWeight: AppConstant.semiBold,
+                              ),
+                              Icon(
+                                Icons.arrow_forward,
+                                color: Colors.blue,
+                                size: 17.h,
+                                weight: 30,
+                              ),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          height: screenHeight * 0.12,
+                          width: screenWidth * 0.36,
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              image: AssetImage(Assets.imagesOnboarding1),
+                              fit: BoxFit.cover,
+                            ),
+                            borderRadius: BorderRadius.only(
+                              topRight: Radius.circular(18.r),
+                              bottomRight: Radius.circular(18.r),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                );
+              },
+            ),
+            AppSizes.spaceH(20),
+
+
 
 
           ],
@@ -228,7 +289,7 @@ class DrawerItem extends StatelessWidget {
   final String label;
   final String? subLabel;
   final void Function()? onTap;
-  final bool showArrow; // 👈 new property
+  final bool showArrow;
 
   const DrawerItem({
     super.key,
@@ -236,7 +297,7 @@ class DrawerItem extends StatelessWidget {
     required this.label,
     this.subLabel,
     this.onTap,
-    this.showArrow = true, // default: arrow dikhayega
+    this.showArrow = true,
   });
 
   @override
@@ -255,7 +316,7 @@ class DrawerItem extends StatelessWidget {
       trailing: showArrow
           ? Icon(Icons.arrow_forward_ios,
           size: 16.h, color: context.textSecondary)
-          : null, // 👈 agar false hoga to arrow nahi dikhayega
+          : null,
       onTap: onTap,
     );
   }

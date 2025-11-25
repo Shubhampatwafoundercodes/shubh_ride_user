@@ -41,7 +41,6 @@ class VoucherNotifier extends StateNotifier<VoucherState> {
         state = state.copyWith(isLoading: false, vouchers: res);
 
       }else{
-        print("Shubham");
         state = state.copyWith(isLoading: false, vouchers: null);
 
       }

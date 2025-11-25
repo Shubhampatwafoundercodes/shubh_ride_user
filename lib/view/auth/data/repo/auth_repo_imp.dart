@@ -1,20 +1,19 @@
 
 
-import 'package:rider_pay/helper/network/base_api_service.dart';
-import 'package:rider_pay/res/api_urls.dart';
-import 'package:rider_pay/view/auth/data/model/login_responce.dart';
-import 'package:rider_pay/view/auth/domain/repo/auth_repo.dart';
+import 'package:rider_pay_user/helper/network/base_api_service.dart';
+import 'package:rider_pay_user/res/api_urls.dart';
+import 'package:rider_pay_user/view/auth/data/model/login_responce.dart';
+import 'package:rider_pay_user/view/auth/domain/repo/auth_repo.dart';
 
 class AuthRepositoryImpl implements AuthRepository {
   final BaseApiServices api;
   AuthRepositoryImpl(this.api);
 
   @override
-  Future<AuthResponse> login(String phone) async {
+  Future<AuthResponse> login(String phone,String fcmToken) async {
     final url = ApiUrls.loginUrl;
-    final body = {"phone": phone};
+    final body = {"phone": phone,"fcmToken":fcmToken};
     final data = await api.getPostApiResponse(url, body);
-    print(data);
     return AuthResponse.fromJson(data);
   }
 
@@ -22,7 +21,6 @@ class AuthRepositoryImpl implements AuthRepository {
   Future<dynamic> sendOtp(String phone) async {
     final url = ApiUrls.sendOtpUrl;
     final data = await api.getGetApiResponse(url+phone);
-    print("shubhamm send otp field  $data , $url , $phone");
     return data;
   }
 

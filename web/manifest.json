@@ -1,6 +1,6 @@
 {
-    "name": "rider_pay",
-    "short_name": "rider_pay",
+    "name": "rider_pay_user",
+    "short_name": "rider_pay_user",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

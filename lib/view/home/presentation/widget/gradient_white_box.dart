@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:rider_pay/res/app_color.dart';
+import 'package:rider_pay_user/res/app_color.dart';
 
 class GradientContainer extends StatelessWidget {
   final Widget child;
@@ -45,6 +45,7 @@ class GradientContainer extends StatelessWidget {
             )
           else
             BoxShadow(
+              // ignore: deprecated_member_use
               color: Colors.black.withOpacity(0.6),
               blurRadius: 8,
               offset: const Offset(0, 4),

@@ -1,6 +1,6 @@
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:rider_pay/view/map/domain/repositories/location_repo.dart';
+import 'package:rider_pay_user/view/map/domain/repositories/location_repo.dart';
 
 
 
@@ -35,7 +35,6 @@ class LocationRepositoryImpl implements LocationRepository {
 
       return LatLng(position.latitude, position.longitude);
     } catch (e) {
-      print("Error getting location: $e");
       return null;
     }
   }

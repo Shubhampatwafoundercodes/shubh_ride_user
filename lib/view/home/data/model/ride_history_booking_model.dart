@@ -7,13 +7,31 @@ class RideBookingHistoryModel {
 
   final int? code;
   final String? msg;
-  final List<RideHistorySingleDataModel> data;
+  final Data? data;
 
   factory RideBookingHistoryModel.fromJson(Map<String, dynamic> json){
     return RideBookingHistoryModel(
       code: json["code"],
       msg: json["msg"],
+      data: json["data"] == null ? null : Data.fromJson(json["data"]),
+    );
+  }
+
+}
+
+class Data {
+  Data({
+    required this.data,
+    required this.pending,
+  });
+
+  final List<RideHistorySingleDataModel> data;
+  final RideHistorySingleDataModel? pending;
+
+  factory Data.fromJson(Map<String, dynamic> json){
+    return Data(
       data: json["data"] == null ? [] : List<RideHistorySingleDataModel>.from(json["data"]!.map((x) => RideHistorySingleDataModel.fromJson(x))),
+      pending: json["pending"] == null ? null : RideHistorySingleDataModel.fromJson(json["pending"]),
     );
   }
 

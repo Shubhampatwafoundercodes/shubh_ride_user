@@ -1,4 +1,4 @@
-package com.rider_pay.rider_pay
+package com.rider_pay_user.rider_pay_user
 
 import io.flutter.embedding.android.FlutterActivity
 

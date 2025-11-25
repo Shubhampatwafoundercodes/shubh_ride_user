@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:rider_pay/generated/assets.dart';
-import 'package:rider_pay/l10n/app_localizations.dart';
-import 'package:rider_pay/main.dart';
-import 'package:rider_pay/res/app_border.dart';
-import 'package:rider_pay/res/app_color.dart';
-import 'package:rider_pay/res/app_constant.dart';
-import 'package:rider_pay/res/app_padding.dart';
-import 'package:rider_pay/res/app_size.dart';
-import 'package:rider_pay/res/constant/common_bottom_sheet.dart';
-import 'package:rider_pay/res/constant/common_network_img.dart';
-import 'package:rider_pay/res/constant/const_text.dart';
-import 'package:rider_pay/utils/routes/routes_name.dart';
-import 'package:rider_pay/view/home/provider/provider.dart';
-import 'package:rider_pay/view/map/presentation/controller/ride_flow_controller.dart';
+// ignore: unused_import
+import 'package:rider_pay_user/generated/assets.dart';
+import 'package:rider_pay_user/l10n/app_localizations.dart';
+import 'package:rider_pay_user/main.dart';
+import 'package:rider_pay_user/res/app_border.dart';
+import 'package:rider_pay_user/res/app_color.dart';
+import 'package:rider_pay_user/res/app_constant.dart';
+import 'package:rider_pay_user/res/app_padding.dart';
+import 'package:rider_pay_user/res/app_size.dart';
+import 'package:rider_pay_user/res/constant/common_bottom_sheet.dart';
+import 'package:rider_pay_user/res/constant/common_network_img.dart';
+import 'package:rider_pay_user/res/constant/const_text.dart';
+import 'package:rider_pay_user/utils/routes/routes_name.dart';
+import 'package:rider_pay_user/view/home/provider/provider.dart';
+import 'package:rider_pay_user/view/map/presentation/controller/ride_flow_controller.dart';
 
 class VehicleTypeWidget extends ConsumerWidget {
   const VehicleTypeWidget({super.key});
@@ -63,9 +64,7 @@ class VehicleTypeWidget extends ConsumerWidget {
                               children: List.generate(vehiclesList.length, (index) => GestureDetector(
                                   onTap: () {
                                     final rideController = ref.watch(rideFlowProvider.notifier,);
-                                    final vehicle = vehiclesList[index];
-
-                                    rideController.selectVehicle(vehicle.id??-1, 0);
+                                    // rideController.selectVehicle(vehicle.id??1);
                                     Navigator.pushNamed(context, RouteName.searchLocationScreen);
 
                                   },
@@ -116,7 +115,7 @@ class VehicleTypeWidget extends ConsumerWidget {
                 child: GestureDetector(
                   onTap: () {
                     final rideController = ref.watch(rideFlowProvider.notifier);
-                    rideController.selectVehicle(index, 0);
+                    // rideController.selectVehicle(vehiclesList[index].id??1,);
                     Navigator.pushNamed(context, RouteName.searchLocationScreen);
                   },
                   child: ExploreItemWidget(

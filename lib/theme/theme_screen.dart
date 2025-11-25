@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:rider_pay/l10n/app_localizations.dart';
-import 'package:rider_pay/res/app_btn.dart';
-import 'package:rider_pay/res/app_color.dart';
-import 'package:rider_pay/res/app_constant.dart';
-import 'package:rider_pay/res/app_padding.dart';
-import 'package:rider_pay/res/app_size.dart';
-import 'package:rider_pay/res/constant/const_back_btn.dart';
-import 'package:rider_pay/res/constant/const_drop_down.dart';
-import 'package:rider_pay/res/constant/const_text.dart';
-import 'package:rider_pay/theme/theme_controller.dart' show themeModeProvider;
+import 'package:rider_pay_user/l10n/app_localizations.dart';
+import 'package:rider_pay_user/res/app_btn.dart';
+import 'package:rider_pay_user/res/app_color.dart';
+import 'package:rider_pay_user/res/app_constant.dart';
+import 'package:rider_pay_user/res/app_padding.dart';
+import 'package:rider_pay_user/res/app_size.dart';
+import 'package:rider_pay_user/res/constant/const_back_btn.dart';
+import 'package:rider_pay_user/res/constant/const_drop_down.dart';
+import 'package:rider_pay_user/res/constant/const_text.dart';
+import 'package:rider_pay_user/theme/theme_controller.dart' show themeModeProvider;
 
 class ThemeScreen extends ConsumerWidget {
   const ThemeScreen({super.key});

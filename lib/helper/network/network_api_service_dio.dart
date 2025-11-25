@@ -1,8 +1,8 @@
 // import 'dart:io';
 // import 'package:flutter/foundation.dart';
-// import 'package:rider_pay/helper/network/api_exception.dart';
+// import 'package:rider_pay_user/helper/network/api_exception.dart';
 //
-// import 'package:rider_pay/helper/network/base_api_service.dart';
+// import 'package:rider_pay_user/helper/network/base_api_service.dart';
 //
 //
 // class DioApiServices extends BaseApiServices {

@@ -1,3 +1,4 @@
+// ignore: unused_import
 import 'dart:convert';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -6,8 +7,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 class User {
   final String id;
   final String token;
+  final bool onBoardSeen;
 
-  User({required this.id, required this.token});
+  User({required this.id, required this.token,  this.onBoardSeen = false});
 }
 
 class UserNotifier extends StateNotifier<User?> {
@@ -18,8 +20,12 @@ class UserNotifier extends StateNotifier<User?> {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     final id = sharedPreferences.getString('userID');
     final token = sharedPreferences.getString('token');
+    final isOnBoardSeen =
+        sharedPreferences.getBool('isOnboardingSeen') ?? false;
     if (id != null && token != null) {
-      state = User(id: id, token: token);
+      state = User(id: id, token: token, onBoardSeen: isOnBoardSeen);
+    } else {
+      state = User(id: "", token: "", onBoardSeen: isOnBoardSeen);
     }
   }
 
@@ -28,7 +34,9 @@ class UserNotifier extends StateNotifier<User?> {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     sharedPreferences.setString('userID', id);
     sharedPreferences.setString('token', token);
-    state = User(id: id, token: token);
+    final isOnBoardSeen = sharedPreferences.getBool('isOnboardingSeen') ?? false;
+
+    state = User(id: id, token: token, onBoardSeen: isOnBoardSeen);
   }
 
   // Clear user (optional logout)
@@ -38,9 +46,17 @@ class UserNotifier extends StateNotifier<User?> {
     sharedPreferences.remove('token');
     state = null;
   }
+
+  //onboard screen seen
+  // onboarding_notifier.dart ya onboarding screen ke controller me
+  Future<void> markOnboardingComplete() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setBool('isOnboardingSeen', true);
+  }
+
   String? get token => state?.token;
   String? get userId => state?.id;
-
+  bool get isOnboardingSeen => state?.onBoardSeen ?? false;
 }
 
 // Provider

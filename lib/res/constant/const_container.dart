@@ -1,9 +1,9 @@
 
 import 'package:flutter/material.dart';
-import 'package:rider_pay/res/app_border.dart';
+import 'package:rider_pay_user/res/app_border.dart';
 // ignore: unused_import
-import 'package:rider_pay/res/app_constant.dart';
-import 'package:rider_pay/res/constant/const_text.dart';
+import 'package:rider_pay_user/res/app_constant.dart';
+import 'package:rider_pay_user/res/constant/const_text.dart';
 
 
 class ConstContainer extends StatelessWidget {

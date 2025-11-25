@@ -1,145 +1,22 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pinput/pinput.dart';
-import 'package:rider_pay/l10n/app_localizations.dart';
-import 'package:rider_pay/res/app_border.dart';
-import 'package:rider_pay/res/app_btn.dart';
-import 'package:rider_pay/res/app_color.dart';
-import 'package:rider_pay/res/app_constant.dart';
-import 'package:rider_pay/res/app_padding.dart';
-import 'package:rider_pay/res/app_size.dart';
-import 'package:rider_pay/res/constant/const_back_btn.dart';
-import 'package:rider_pay/res/constant/const_text.dart';
-import 'package:rider_pay/res/validator/app_input_formatters.dart';
-import 'package:rider_pay/res/validator/app_validator.dart';
-import 'package:rider_pay/utils/routes/routes_name.dart';
-import 'package:rider_pay/view/auth/provider/auth_provider.dart';
-// class OtpScreen extends StatefulWidget {
-//   const OtpScreen({super.key});
-//
-//   @override
-//   State<OtpScreen> createState() => _OtpScreenState();
-// }
-//
-// class _OtpScreenState extends State<OtpScreen> {
-//   final focusNode = FocusNode();
-//   final pinController = TextEditingController();
-//   @override
-//   void dispose() {
-//     super.dispose();
-//     pinController.dispose();
-//   }
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     final loc = AppLocalizations.of(context)!;
-//     return Scaffold(
-//       body: Padding(
-//         padding: AppPadding.screenPadding,
-//         child: Column(
-//           // crossAxisAlignment: CrossAxisAlignment.start,
-//
-//           children: [
-//             AppSizes.spaceH(25),
-//             ConstAppBackBtn(),
-//             AppSizes.spaceH(40),
-//
-//             ConstText(
-//               text: loc.phoneVerification,
-//               fontSize: AppConstant.fontSizeHeading,
-//               fontWeight: AppConstant.semiBold,
-//               color: context.textPrimary,
-//
-//             ),
-//             AppSizes.spaceH(10),
-//
-//             ConstText(
-//               text: "${loc.enterYourNumber} +919876567887",
-//               // color: AppColor.greyDark,
-//               fontSize: AppConstant.fontSizeOne,
-//
-//             ),
-//             Pinput(
-//               controller: pinController,
-//               focusNode: focusNode,
-//               length: 4,
-//               keyboardType: TextInputType.number,
-//               inputFormatters: AppInputFormatters.digitsOnly,
-//               defaultPinTheme: defaultPinTheme,
-//               focusedPinTheme: focusedPinTheme,
-//               submittedPinTheme: defaultPinTheme,
-//               showCursor: true,
-//               mainAxisAlignment: MainAxisAlignment. center,
-//               validator: AppValidator.validateOtp,
-//             ),
-//
-//             DoubleText(
-//               firstText: loc.doNotAccount,
-//               secondText: loc.resend,
-//               firstSize: AppConstant.fontSizeTwo,
-//               secondSize: AppConstant.fontSizeTwo,
-//               // firstColor: Colors.black,
-//               // secondColor: Colors.blue,
-//               onTap: () {
-//
-//                 print("Sign Up tapped!");
-//               },
-//             ),
-//             Spacer(),
-//
-//             AppBtn(
-//               // color: Colors.white,
-//               border: Border.all(color:AppColor.primary,width: 1),
-//               title: loc.verifyNow,
-//               // titleColor: AppColor.primary,
-//               margin: AppPadding.screenPaddingV,
-//               onTap: (){
-//                 Navigator.pushNamed(context, RouteName.register);
-//               },
-//             ),
-//
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-//   final defaultPinTheme = PinTheme(
-//     width: 50,
-//     height: 50,
-//     margin:EdgeInsets.only(left: 15.w,top: 30.h,bottom: 20.h),
-//
-//     textStyle: TextStyle(
-//       fontSize: 22,
-//       color: AppColor.textSecondary,
-//       fontFamily: "Poppins",
-//       fontWeight: FontWeight.w600,
-//     ),
-//     decoration: BoxDecoration(
-//       color: Colors.white70,
-//       borderRadius: AppBorders.smallRadius,
-//       border: Border.all(color: AppColor.border,width: 1)
-//     ),
-//   );
-//
-//   final focusedPinTheme = PinTheme(
-//     width: 50,
-//     height: 50,
-//     textStyle: TextStyle(
-//       fontSize: 22,
-//      color:  AppColor.textSecondary,
-//       fontWeight: FontWeight.bold,
-//       fontFamily: "Poppins"
-//     ),
-//     margin:EdgeInsets.only(left: 15.w,top: 30.h,bottom: 20.h),
-//     decoration: BoxDecoration(
-//       color: Colors.yellow.withAlpha(300),
-//       borderRadius: AppBorders.smallRadius,
-//         border: Border.all(color: AppColor.primary,width: 1)
-//
-//     ),
-//   );
-// }
+import 'package:rider_pay_user/l10n/app_localizations.dart';
+import 'package:rider_pay_user/res/app_btn.dart';
+import 'package:rider_pay_user/res/app_color.dart';
+import 'package:rider_pay_user/res/app_constant.dart';
+import 'package:rider_pay_user/res/app_padding.dart';
+import 'package:rider_pay_user/res/app_size.dart';
+import 'package:rider_pay_user/res/constant/const_back_btn.dart';
+import 'package:rider_pay_user/res/constant/const_text.dart';
+import 'package:rider_pay_user/res/validator/app_input_formatters.dart';
+import 'package:rider_pay_user/res/validator/app_validator.dart';
+import 'package:rider_pay_user/utils/routes/routes_name.dart';
+import 'package:rider_pay_user/utils/utils.dart';
+import 'package:rider_pay_user/view/auth/provider/auth_provider.dart';
+
 class OtpScreen extends ConsumerStatefulWidget {
   const OtpScreen({super.key});
 
@@ -150,7 +27,32 @@ class OtpScreen extends ConsumerStatefulWidget {
 class _OtpScreenState extends ConsumerState<OtpScreen> {
   final focusNode = FocusNode();
   final pinController = TextEditingController();
-  String? phone; // Make it nullable
+  String? phone;
+
+  Timer? _timer;
+  int _secondsRemaining = 60;
+  bool _canResend = false;
+
+  void _startTimer() {
+    _timer?.cancel();
+    setState(() {
+      _secondsRemaining = 60;
+      _canResend = false;
+    });
+
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      if (_secondsRemaining > 0) {
+        setState(() {
+          _secondsRemaining--;
+        });
+      } else {
+        setState(() {
+          _canResend = true;
+        });
+        timer.cancel();
+      }
+    });
+  }
 
   @override
   void initState() {
@@ -161,7 +63,8 @@ class _OtpScreenState extends ConsumerState<OtpScreen> {
         setState(() {
           phone = args["mobile"] as String;
         });
-        ref.read(authNotifierProvider.notifier).sendOtp(phone.toString());
+        // ref.read(authNotifierProvider.notifier).sendOtp(phone.toString());
+        _startTimer();
       }
     });
   }
@@ -169,23 +72,51 @@ class _OtpScreenState extends ConsumerState<OtpScreen> {
   @override
   void dispose() {
     pinController.dispose();
+    _timer?.cancel();
     super.dispose();
   }
 
-  void _resendOtp() async {
-    await ref.read(authNotifierProvider.notifier).sendOtp(phone.toString());
-
+  Future<void> _resendOtp() async {
+    if (_canResend && phone != null) {
+      await ref.read(authNotifierProvider.notifier).sendOtp(phone.toString());
+      _startTimer();
+    }
   }
 
-  void _verifyOtp() async {
+  Future<void> _verifyOtp() async {
     final otp = pinController.text.trim();
+    if (otp.isEmpty) {
+      toastMsg("Please enter OTP");
+      return;
+    }
     final verified = await ref.read(authNotifierProvider.notifier).verifyOtp(phone.toString(), otp);
-
     if (verified) {
-      Navigator.pushNamedAndRemoveUntil(context, RouteName.home, (route) => false);
 
+      final loginStatus =
+      await ref.read(authNotifierProvider.notifier).login(phone!);
+      if (loginStatus == 2) {
+        Navigator.pushNamedAndRemoveUntil(context, RouteName.home, (_) => false);
+      } else if (loginStatus == 1) {
+        Navigator.pushNamedAndRemoveUntil(context, RouteName.register, (_) => false);
+      } else {
+        toastMsg("Something went wrong Please try again");
+      }
+
+      // final args = ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>?;
+      // final isRegister = args?["isRegister"] ?? false;
+      //
+      // if (isRegister == true) {
+      //   // Already registered → go Home
+      //   Navigator.pushNamedAndRemoveUntil(context, RouteName.home, (route) => false);
+      // } else {
+      //   // Not registered → go Register
+      //   Navigator.pushNamedAndRemoveUntil(context, RouteName.register, (route) => false, arguments: {"mobile": phone});
+      // }
+
+
+      // Navigator.pushNamedAndRemoveUntil(context, RouteName.home, (route) => false);
     } else {
-      debugPrint("Shubham: OTP Failed");
+      debugPrint("Verify OTP failed");
     }
   }
 
@@ -193,60 +124,95 @@ class _OtpScreenState extends ConsumerState<OtpScreen> {
   Widget build(BuildContext context) {
     final loc = AppLocalizations.of(context)!;
     final authState = ref.watch(authNotifierProvider);
+    final authNo = ref.watch(authNotifierProvider.notifier);
 
-    return Scaffold(
-      body: Padding(
-        padding: AppPadding.screenPadding,
-        child: Column(
-          children: [
-            AppSizes.spaceH(25),
-            ConstAppBackBtn(),
-            AppSizes.spaceH(40),
 
-            ConstText(
-              text: loc.phoneVerification,
-              fontSize: AppConstant.fontSizeHeading,
-              fontWeight: AppConstant.semiBold,
-              color: context.textPrimary,
-            ),
-            AppSizes.spaceH(10),
+    return PopScope(
+      canPop: false,
+      onPopInvokedWithResult: (didPop, result) {
+        authNo.reset();
+        Navigator.pushNamedAndRemoveUntil(
+          context,
+          RouteName.login,
+              (route) => false,
+        );
+      },
+      child: Scaffold(
+        body: Padding(
+          padding: AppPadding.screenPadding,
+          child: Column(
+            children: [
+              AppSizes.spaceH(25),
+              const ConstAppBackBtn(),
+              AppSizes.spaceH(40),
 
-            ConstText(
-              text: "${loc.enterYourNumber} $phone",
-              fontSize: AppConstant.fontSizeOne,
-            ),
+              ConstText(
+                text: loc.phoneVerification,
+                fontSize: AppConstant.fontSizeHeading,
+                fontWeight: AppConstant.semiBold,
+                color: context.textPrimary,
+              ),
+              AppSizes.spaceH(10),
 
-            Pinput(
-              controller: pinController,
-              focusNode: focusNode,
-              length: 4,
-              keyboardType: TextInputType.number,
-              inputFormatters: AppInputFormatters.digitsOnly,
-              defaultPinTheme: defaultPinTheme,
-              focusedPinTheme: focusedPinTheme,
-              submittedPinTheme: defaultPinTheme,
-              showCursor: true,
-              mainAxisAlignment: MainAxisAlignment.center,
-              validator: AppValidator.validateOtp,
-            ),
+              ConstText(
+                text: "${loc.enterYourNumber} $phone",
+                fontSize: AppConstant.fontSizeOne,
+              ),
 
-            DoubleText(
-              firstText: loc.doNotAccount,
-              secondText: loc.resend,
-              firstSize: AppConstant.fontSizeTwo,
-              secondSize: AppConstant.fontSizeTwo,
-              onTap: _resendOtp,
-            ),
-            Spacer(),
+              /// 🔹 OTP Input
+              Pinput(
+                controller: pinController,
+                focusNode: focusNode,
+                length: 4,
+                keyboardType: TextInputType.number,
+                inputFormatters: AppInputFormatters.digitsOnly,
+                defaultPinTheme: defaultPinTheme,
+                focusedPinTheme: focusedPinTheme,
+                submittedPinTheme: defaultPinTheme,
+                showCursor: true,
+                mainAxisAlignment: MainAxisAlignment.center,
+                validator: AppValidator.validateOtp,
+                onChanged: (v){
+                  if(v.length==4){
+                    _verifyOtp();
+                  }
+                },
+              ),
 
-            AppBtn(
-              loading: authState.isLoading,
-              border: Border.all(color: AppColor.primary, width: 1),
-              title: loc.verifyNow,
-              margin: AppPadding.screenPaddingV,
-              onTap: _verifyOtp,
-            ),
-          ],
+              /// 🔹 Timer or Resend Button
+              AppSizes.spaceH(10),
+              _canResend
+                  ? GestureDetector(
+                onTap: _resendOtp,
+                child: ConstText(
+                  text: loc.resend,
+                  fontSize: AppConstant.fontSizeTwo,
+                  color: Colors.blue,
+                  fontWeight: AppConstant.semiBold,
+                ),
+              )
+                  : ConstText(
+                text: "Resend OTP in 00:${_secondsRemaining.toString().padLeft(2, '0')}",
+                fontSize: AppConstant.fontSizeTwo,
+                color: context.textSecondary,
+              ),
+
+              const Spacer(),
+
+              /// 🔹 Verify Button
+              AppBtn(
+                loading: authState.isLoading,
+                border: Border.all(color: AppColor.primary, width: 1),
+                title: loc.verifyNow,
+                margin: AppPadding.screenPaddingV,
+                onTap: _verifyOtp,
+              ),
+
+
+              AppSizes.spaceH(30),
+
+            ],
+          ),
         ),
       ),
     );

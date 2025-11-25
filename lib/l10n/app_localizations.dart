@@ -308,7 +308,7 @@ abstract class AppLocalizations {
   /// No description provided for @goPlacesWithRiderPay.
   ///
   /// In en, this message translates to:
-  /// **'Go Places with Rider Pay'**
+  /// **'Go Places'**
   String get goPlacesWithRiderPay;
 
   /// No description provided for @selectTheme.
@@ -736,6 +736,222 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Cancel & Refund'**
   String get cancelRefund;
+
+  /// No description provided for @driver.
+  ///
+  /// In en, this message translates to:
+  /// **'Driver?'**
+  String get driver;
+
+  /// No description provided for @setting.
+  ///
+  /// In en, this message translates to:
+  /// **'Setting'**
+  String get setting;
+
+  /// No description provided for @getEarning.
+  ///
+  /// In en, this message translates to:
+  /// **'Get Earning'**
+  String get getEarning;
+
+  /// No description provided for @drop.
+  ///
+  /// In en, this message translates to:
+  /// **'Drop'**
+  String get drop;
+
+  /// No description provided for @currentLocation.
+  ///
+  /// In en, this message translates to:
+  /// **'Current Location'**
+  String get currentLocation;
+
+  /// No description provided for @dropLocation.
+  ///
+  /// In en, this message translates to:
+  /// **'Drop Location'**
+  String get dropLocation;
+
+  /// No description provided for @cashbackMsg.
+  ///
+  /// In en, this message translates to:
+  /// **'You get cashback complete your ride cashback!'**
+  String get cashbackMsg;
+
+  /// No description provided for @noVehicle.
+  ///
+  /// In en, this message translates to:
+  /// **'No vehicles available'**
+  String get noVehicle;
+
+  /// No description provided for @bookRide.
+  ///
+  /// In en, this message translates to:
+  /// **'Book Ride'**
+  String get bookRide;
+
+  /// No description provided for @cash.
+  ///
+  /// In en, this message translates to:
+  /// **'Cash'**
+  String get cash;
+
+  /// No description provided for @online.
+  ///
+  /// In en, this message translates to:
+  /// **'Online'**
+  String get online;
+
+  /// No description provided for @searchingDriver.
+  ///
+  /// In en, this message translates to:
+  /// **'Searching for driver...'**
+  String get searchingDriver;
+
+  /// No description provided for @driverFound.
+  ///
+  /// In en, this message translates to:
+  /// **'Driver(s) found'**
+  String get driverFound;
+
+  /// No description provided for @pleaseConfirmPayment.
+  ///
+  /// In en, this message translates to:
+  /// **'Please confirm payment'**
+  String get pleaseConfirmPayment;
+
+  /// No description provided for @rideInProgress.
+  ///
+  /// In en, this message translates to:
+  /// **'Ride in progress'**
+  String get rideInProgress;
+
+  /// No description provided for @driverArrivedPickup.
+  ///
+  /// In en, this message translates to:
+  /// **'Driver arrived at pickup'**
+  String get driverArrivedPickup;
+
+  /// No description provided for @driverOnTheWay.
+  ///
+  /// In en, this message translates to:
+  /// **'Driver on the way'**
+  String get driverOnTheWay;
+
+  /// No description provided for @waitingDriverResponse.
+  ///
+  /// In en, this message translates to:
+  /// **'Waiting for driver response'**
+  String get waitingDriverResponse;
+
+  /// No description provided for @rideCompleted.
+  ///
+  /// In en, this message translates to:
+  /// **'Ride Completed!'**
+  String get rideCompleted;
+
+  /// No description provided for @tripCompletedMsg.
+  ///
+  /// In en, this message translates to:
+  /// **'Your trip has been completed successfully.'**
+  String get tripCompletedMsg;
+
+  /// No description provided for @searchNearbyDrivers.
+  ///
+  /// In en, this message translates to:
+  /// **'⏳ Searching for nearby drivers...'**
+  String get searchNearbyDrivers;
+
+  /// No description provided for @accept.
+  ///
+  /// In en, this message translates to:
+  /// **'Accept'**
+  String get accept;
+
+  /// No description provided for @paymentPending.
+  ///
+  /// In en, this message translates to:
+  /// **'Payment Pending'**
+  String get paymentPending;
+
+  /// No description provided for @completePaymentMsg.
+  ///
+  /// In en, this message translates to:
+  /// **'Please complete your payment to continue.'**
+  String get completePaymentMsg;
+
+  /// No description provided for @call.
+  ///
+  /// In en, this message translates to:
+  /// **'Call'**
+  String get call;
+
+  /// No description provided for @vehicleNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Vehicle Number: '**
+  String get vehicleNumber;
+
+  /// No description provided for @startRidePin.
+  ///
+  /// In en, this message translates to:
+  /// **'Start your ride using PIN'**
+  String get startRidePin;
+
+  /// No description provided for @pickupFrom.
+  ///
+  /// In en, this message translates to:
+  /// **'Pickup From'**
+  String get pickupFrom;
+
+  /// No description provided for @dropTo.
+  ///
+  /// In en, this message translates to:
+  /// **'Drop To'**
+  String get dropTo;
+
+  /// No description provided for @goToMap.
+  ///
+  /// In en, this message translates to:
+  /// **'Go to Map'**
+  String get goToMap;
+
+  /// No description provided for @completeOnlinePayment.
+  ///
+  /// In en, this message translates to:
+  /// **'Complete Online Payment'**
+  String get completeOnlinePayment;
+
+  /// No description provided for @ok.
+  ///
+  /// In en, this message translates to:
+  /// **'OK'**
+  String get ok;
+
+  /// No description provided for @tripDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'Trip Details'**
+  String get tripDetails;
+
+  /// No description provided for @chatInterfaceWillBeImplementedHere.
+  ///
+  /// In en, this message translates to:
+  /// **'Chat interface will be implemented here'**
+  String get chatInterfaceWillBeImplementedHere;
+
+  /// No description provided for @confirmPaymentOf.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm payment of'**
+  String get confirmPaymentOf;
+
+  /// No description provided for @forThisRide.
+  ///
+  /// In en, this message translates to:
+  /// **'for this ride?'**
+  String get forThisRide;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

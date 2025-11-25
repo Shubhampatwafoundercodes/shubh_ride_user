@@ -30,12 +30,16 @@ class Data {
     required this.splashSliders,
     required this.homeSliders,
     required this.faqs,
+    required this.userAppUrl,
+    required this.driverAppUrl,
   });
 
   final int? id;
   final String? name;
   final String? logo;
   final String? hashName;
+  final String? userAppUrl;
+  final String? driverAppUrl;
   final int? status;
   final DateTime? createdAt;
   final List<SplashSlider> splashSliders;
@@ -48,6 +52,8 @@ class Data {
       name: json["name"],
       logo: json["logo"],
       hashName: json["hashName"],
+      userAppUrl: json["userApplicationUrl"],
+      driverAppUrl: json["driverApplicationUrl"],
       status: json["status"],
       createdAt: DateTime.tryParse(json["created_at"] ?? ""),
       splashSliders: json["splashSliders"] == null ? [] : List<SplashSlider>.from(json["splashSliders"]!.map((x) => SplashSlider.fromJson(x))),

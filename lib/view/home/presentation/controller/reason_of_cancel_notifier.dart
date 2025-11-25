@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:rider_pay/view/home/data/model/reson_of_cancel_model.dart';
-import 'package:rider_pay/view/home/domain/repo/reason_of_cancel_repo.dart';
+import 'package:rider_pay_user/view/home/data/model/reson_of_cancel_model.dart';
+import 'package:rider_pay_user/view/home/domain/repo/reason_of_cancel_repo.dart';
 
 class ReasonOfCancelState {
   final bool isLoading;

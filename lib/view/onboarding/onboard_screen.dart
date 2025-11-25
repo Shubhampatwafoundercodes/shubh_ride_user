@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:rider_pay/main.dart';
-import 'package:rider_pay/res/app_color.dart' show AppColor, AppColorsExt;
-import 'package:rider_pay/res/app_constant.dart';
-import 'package:rider_pay/res/app_padding.dart';
-import 'package:rider_pay/res/app_size.dart';
-import 'package:rider_pay/res/constant/common_network_img.dart';
-import 'package:rider_pay/res/constant/const_text.dart';
-import 'package:rider_pay/res/constant/const_text_btn.dart';
-import 'package:rider_pay/view/home/data/model/app_info_model.dart';
-import 'package:rider_pay/view/home/provider/provider.dart';
-import 'package:rider_pay/view/map/provider/map_provider.dart';
-import 'package:rider_pay/utils/routes/routes_name.dart';
-import 'package:rider_pay/view/onboarding/model/onboard_model.dart';
+import 'package:rider_pay_user/main.dart';
+import 'package:rider_pay_user/res/app_color.dart' show AppColor, AppColorsExt;
+import 'package:rider_pay_user/res/app_constant.dart';
+import 'package:rider_pay_user/res/app_padding.dart';
+import 'package:rider_pay_user/res/app_size.dart';
+import 'package:rider_pay_user/res/constant/common_network_img.dart';
+import 'package:rider_pay_user/res/constant/const_text.dart';
+import 'package:rider_pay_user/res/constant/const_text_btn.dart';
+import 'package:rider_pay_user/view/home/data/model/app_info_model.dart';
+import 'package:rider_pay_user/view/home/provider/provider.dart';
+import 'package:rider_pay_user/view/map/provider/map_provider.dart';
+import 'package:rider_pay_user/utils/routes/routes_name.dart';
+import 'package:rider_pay_user/view/onboarding/model/onboard_model.dart';
+import 'package:rider_pay_user/view/share_pref/user_provider.dart';
 
 class OnboardingScreen extends ConsumerStatefulWidget {
   const OnboardingScreen({super.key});
@@ -44,8 +45,8 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                 alignment: Alignment.topLeft,
                 child:Image.asset(
                   AppConstant.appLogoLightMode,
-                  height: 80.h,
-                  // width:screenWidth * 0.3,
+                  height: 60.h,
+                  width:screenWidth * 0.4,
                 ),
               ),
             ),
@@ -137,7 +138,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                 GestureDetector(
                   onTap: ()  {
                     controller.nextPage(()async{
-
+                      await ref.read(userProvider.notifier).markOnboardingComplete();
                       final hasPermission = await ref.read(locationServiceProvider.notifier).ensurePermission();
 
                       if (!hasPermission) {
@@ -160,29 +161,24 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
             ),
             AppSizes.spaceH(15),
             ConstTextBtn(
-              onTap: ()  {
-
-                controller.nextPage(()async{
-
+              onTap: () async {
+                if (state.currentPage != slides.length - 1) {
+                  controller.pageController.jumpToPage(slides.length - 1);
+                  controller.updatePage(slides.length - 1);
+                } else {
+                  await ref.read(userProvider.notifier).markOnboardingComplete();
                   final hasPermission = await ref.read(locationServiceProvider.notifier).ensurePermission();
-
                   if (!hasPermission) {
                     Navigator.pushNamed(context, RouteName.locationScreen);
                     return;
                   }
-
                   Navigator.pushNamed(context, RouteName.welcomeScreen);
-
-                });
-
+                }
               },
-              text: state.currentPage == slides.length - 1
-                  ? "Done"
-                  : "Skip",
+              text: state.currentPage == slides.length - 1 ? "Done" : "Skip",
               textColor: context.primary,
               fontWeight: AppConstant.medium,
-            ),
-            AppSizes.spaceH(20),
+            ),            AppSizes.spaceH(20),
           ],
         ),
       ),

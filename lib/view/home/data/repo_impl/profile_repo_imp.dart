@@ -1,8 +1,8 @@
-import 'package:rider_pay/helper/network/base_api_service.dart';
-import 'package:rider_pay/res/api_urls.dart';
-import 'package:rider_pay/view/home/data/model/get_profile_model.dart';
-import 'package:rider_pay/view/home/data/model/get_voucher_model.dart';
-import 'package:rider_pay/view/home/domain/repo/profile_repo.dart';
+import 'package:rider_pay_user/helper/network/base_api_service.dart';
+import 'package:rider_pay_user/res/api_urls.dart';
+import 'package:rider_pay_user/view/home/data/model/get_profile_model.dart';
+import 'package:rider_pay_user/view/home/data/model/get_voucher_model.dart';
+import 'package:rider_pay_user/view/home/domain/repo/profile_repo.dart';
 
 class ProfileRepoImp implements ProfileRepo {
   final BaseApiServices api;

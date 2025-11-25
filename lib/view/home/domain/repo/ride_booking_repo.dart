@@ -1,4 +1,4 @@
-import 'package:rider_pay/view/home/data/model/ride_history_booking_model.dart';
+import 'package:rider_pay_user/view/home/data/model/ride_history_booking_model.dart';
 
 abstract class RideBookingRepo {
 

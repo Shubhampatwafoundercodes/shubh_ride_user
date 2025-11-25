@@ -1,9 +1,10 @@
 
 
 import 'package:flutter/material.dart';
+// ignore: unused_import
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:rider_pay/main.dart';
-import 'package:rider_pay/res/app_color.dart';
+import 'package:rider_pay_user/main.dart';
+import 'package:rider_pay_user/res/app_color.dart';
 
 import 'app_constant.dart';
 import 'constant/const_text.dart';

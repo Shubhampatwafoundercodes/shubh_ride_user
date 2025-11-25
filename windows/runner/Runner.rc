@@ -89,13 +89,13 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName", "com.rider_pay" "\0"
-            VALUE "FileDescription", "rider_pay" "\0"
+            VALUE "CompanyName", "com.rider_pay_user" "\0"
+            VALUE "FileDescription", "rider_pay_user" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "rider_pay" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2025 com.rider_pay. All rights reserved." "\0"
-            VALUE "OriginalFilename", "rider_pay.exe" "\0"
-            VALUE "ProductName", "rider_pay" "\0"
+            VALUE "InternalName", "rider_pay_user" "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2025 com.rider_pay_user. All rights reserved." "\0"
+            VALUE "OriginalFilename", "rider_pay_user.exe" "\0"
+            VALUE "ProductName", "rider_pay_user" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

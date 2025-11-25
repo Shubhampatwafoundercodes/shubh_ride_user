@@ -1,8 +1,8 @@
 class ApiUrls {
-  static const baseUrl='https://shubhride.codescarts.com/api';
+  static const baseUrl='https://riderpay.codescarts.com/api';
   static const loginUrl='$baseUrl/user/login';
   static const registerUrl='$baseUrl/user/register';
-  static const sendOtpUrl = 'https://otp.fctechteam.org/send_otp.php?mode=test&digit=4&mobile=';
+  static const sendOtpUrl = 'https://otp.fctechteam.org/send_otp.php?mode=live&digit=4&mobile=';
   static const verifyOtpUrl = 'https://otp.fctechteam.org/verifyotp.php?mobile=';
   static const getAppInfo ="$baseUrl/system/systemApi";
   static const addressType ="$baseUrl/system/addressType";
@@ -16,9 +16,14 @@ class ApiUrls {
   static const cancelBookingUrl ="$baseUrl/booking/cancelBooking";
   static const rideBookingHistoryUrl ="$baseUrl/booking/getBookingHistoryByUserId?userId=";
   static const reasonOfCancel ="$baseUrl/system/reasonOfCancel";
-
+  static const createPaying ="$baseUrl/user/createPayin";
+  static const getWalletHistory ="$baseUrl/user/getWalletAndHistory?userId=";
+  static const notificationUrl ="$baseUrl/user/getNotifications?userId=";
+  static const completePaymentRide ="$baseUrl/booking/updatePaymentDetails";
+  static const checkZoneUrl ="$baseUrl/booking/checkZone";
 
 }
+
 
 
 

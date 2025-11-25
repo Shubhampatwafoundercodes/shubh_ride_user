@@ -1,31 +1,32 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:rider_pay/theme/theme_screen.dart';
-import 'package:rider_pay/utils/routes/routes_name.dart';
-import 'package:rider_pay/view/auth/presentation/login_screen.dart';
-import 'package:rider_pay/view/auth/presentation/otp_screen.dart';
-import 'package:rider_pay/view/auth/presentation/register_screen.dart';
-import 'package:rider_pay/view/home/presentation/drawer/profile/add_money.dart' show AddMoneyScreen;
-import 'package:rider_pay/view/home/presentation/drawer/drawer_screen.dart' show DrawerContent;
-import 'package:rider_pay/view/home/presentation/drawer/help_screen.dart';
-import 'package:rider_pay/view/home/presentation/drawer/my_reward_screen.dart';
-import 'package:rider_pay/view/home/presentation/drawer/my_ride/my_ride_details.dart';
-import 'package:rider_pay/view/home/presentation/drawer/my_ride/my_ride_screen.dart';
-import 'package:rider_pay/view/home/presentation/drawer/notification_screen.dart';
-import 'package:rider_pay/view/home/presentation/drawer/profile/profile_screen.dart';
-import 'package:rider_pay/view/home/presentation/drawer/rating.dart';
-import 'package:rider_pay/view/home/presentation/drawer/refer_and_earn.dart';
-import 'package:rider_pay/view/home/presentation/drawer/setting/setting_screen.dart';
-import 'package:rider_pay/view/home/presentation/drawer/profile/wallet_screen.dart';
-import 'package:rider_pay/view/home/presentation/home_screen.dart';
-import 'package:rider_pay/view/language/language_screen.dart';
-import 'package:rider_pay/view/map/presentation/map_screen.dart';
-import 'package:rider_pay/view/map/presentation/search_location_screen.dart';
-import 'package:rider_pay/view/onboarding/location_on_screen.dart';
-import 'package:rider_pay/view/onboarding/onboard_screen.dart';
-import 'package:rider_pay/view/onboarding/welcome_screen.dart';
-import 'package:rider_pay/view/splash/splash_screen.dart';
+import 'package:rider_pay_user/theme/theme_screen.dart';
+import 'package:rider_pay_user/utils/routes/routes_name.dart';
+import 'package:rider_pay_user/view/auth/presentation/login_screen.dart';
+import 'package:rider_pay_user/view/auth/presentation/otp_screen.dart';
+import 'package:rider_pay_user/view/auth/presentation/register_screen.dart';
+import 'package:rider_pay_user/view/home/presentation/drawer/profile/add_money.dart' show AddMoneyScreen;
+import 'package:rider_pay_user/view/home/presentation/drawer/drawer_screen.dart' show DrawerContent;
+import 'package:rider_pay_user/view/home/presentation/drawer/help_screen.dart';
+import 'package:rider_pay_user/view/home/presentation/drawer/my_reward_screen.dart';
+// ignore: unused_import
+import 'package:rider_pay_user/view/home/presentation/drawer/my_ride/my_ride_details.dart';
+import 'package:rider_pay_user/view/home/presentation/drawer/my_ride/my_ride_screen.dart';
+import 'package:rider_pay_user/view/home/presentation/drawer/notification_screen.dart';
+import 'package:rider_pay_user/view/home/presentation/drawer/profile/profile_screen.dart';
+import 'package:rider_pay_user/view/home/presentation/drawer/rating.dart';
+import 'package:rider_pay_user/view/home/presentation/drawer/refer_and_earn.dart';
+import 'package:rider_pay_user/view/home/presentation/drawer/setting/setting_screen.dart';
+import 'package:rider_pay_user/view/home/presentation/drawer/profile/wallet_screen.dart';
+import 'package:rider_pay_user/view/home/presentation/home_screen.dart';
+import 'package:rider_pay_user/view/language/language_screen.dart';
+import 'package:rider_pay_user/view/map/presentation/map_screen.dart';
+import 'package:rider_pay_user/view/map/presentation/search_location_screen.dart';
+import 'package:rider_pay_user/view/onboarding/location_on_screen.dart';
+import 'package:rider_pay_user/view/onboarding/onboard_screen.dart';
+import 'package:rider_pay_user/view/onboarding/welcome_screen.dart';
+import 'package:rider_pay_user/view/splash/splash_screen.dart';
 class AppRoute {
   static Widget generateRoute(String routeName) {
     switch (routeName) {

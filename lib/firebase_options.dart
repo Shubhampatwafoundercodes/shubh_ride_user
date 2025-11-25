@@ -41,47 +41,47 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyCTkFLFtR1FWoxHppVJ3JHFt7YuT3AbWg4',
-    appId: '1:719956929559:web:30da5086993eb6d7654052',
-    messagingSenderId: '719956929559',
-    projectId: 'shubhride-9b16d',
-    authDomain: 'shubhride-9b16d.firebaseapp.com',
-    storageBucket: 'shubhride-9b16d.firebasestorage.app',
+    apiKey: 'AIzaSyADhLaMRAocyTbpPCibOnwFeZSn-LkvVjU',
+    appId: '1:416094018507:web:61828c6813f5bad5a5f44e',
+    messagingSenderId: '416094018507',
+    projectId: 'riderpay-e22aa',
+    authDomain: 'riderpay-e22aa.firebaseapp.com',
+    storageBucket: 'riderpay-e22aa.firebasestorage.app',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyAXYeYas0d6RcJrf2hTglxlBpwoHF8Y4w0',
-    appId: '1:719956929559:android:f14c71015c25d39d654052',
-    messagingSenderId: '719956929559',
-    projectId: 'shubhride-9b16d',
-    storageBucket: 'shubhride-9b16d.firebasestorage.app',
+    apiKey: 'AIzaSyAsGVmFQFeHVGdrIdFjnk-kFdCY8oOFQIs',
+    appId: '1:416094018507:android:ea66490493850c37a5f44e',
+    messagingSenderId: '416094018507',
+    projectId: 'riderpay-e22aa',
+    storageBucket: 'riderpay-e22aa.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyCIsfGFo4qJlGzr-KViFWNZd9yp4LafS98',
-    appId: '1:719956929559:ios:bcb6d064444de139654052',
-    messagingSenderId: '719956929559',
-    projectId: 'shubhride-9b16d',
-    storageBucket: 'shubhride-9b16d.firebasestorage.app',
+    apiKey: 'AIzaSyBuk_uKU-2kTogVHI8Pv9hK5xQRdzljDdA',
+    appId: '1:416094018507:ios:f16ec6bd088ca2eca5f44e',
+    messagingSenderId: '416094018507',
+    projectId: 'riderpay-e22aa',
+    storageBucket: 'riderpay-e22aa.firebasestorage.app',
     iosBundleId: 'com.riderpay.riderPay',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyCIsfGFo4qJlGzr-KViFWNZd9yp4LafS98',
-    appId: '1:719956929559:ios:bcb6d064444de139654052',
-    messagingSenderId: '719956929559',
-    projectId: 'shubhride-9b16d',
-    storageBucket: 'shubhride-9b16d.firebasestorage.app',
+    apiKey: 'AIzaSyBuk_uKU-2kTogVHI8Pv9hK5xQRdzljDdA',
+    appId: '1:416094018507:ios:f16ec6bd088ca2eca5f44e',
+    messagingSenderId: '416094018507',
+    projectId: 'riderpay-e22aa',
+    storageBucket: 'riderpay-e22aa.firebasestorage.app',
     iosBundleId: 'com.riderpay.riderPay',
   );
 
   static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyCTkFLFtR1FWoxHppVJ3JHFt7YuT3AbWg4',
-    appId: '1:719956929559:web:63bd4704f56a1dde654052',
-    messagingSenderId: '719956929559',
-    projectId: 'shubhride-9b16d',
-    authDomain: 'shubhride-9b16d.firebaseapp.com',
-    storageBucket: 'shubhride-9b16d.firebasestorage.app',
+    apiKey: 'AIzaSyADhLaMRAocyTbpPCibOnwFeZSn-LkvVjU',
+    appId: '1:416094018507:web:109428a3a5971538a5f44e',
+    messagingSenderId: '416094018507',
+    projectId: 'riderpay-e22aa',
+    authDomain: 'riderpay-e22aa.firebaseapp.com',
+    storageBucket: 'riderpay-e22aa.firebasestorage.app',
   );
 
 }

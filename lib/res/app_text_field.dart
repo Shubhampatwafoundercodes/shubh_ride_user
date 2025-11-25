@@ -3,9 +3,9 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:rider_pay/res/app_border.dart';
-import 'package:rider_pay/res/app_color.dart';
-import 'package:rider_pay/res/app_constant.dart';
+import 'package:rider_pay_user/res/app_border.dart';
+import 'package:rider_pay_user/res/app_color.dart';
+import 'package:rider_pay_user/res/app_constant.dart';
 
 class AppTextField extends StatefulWidget {
   final TextEditingController? controller;
@@ -51,10 +51,14 @@ class AppTextField extends StatefulWidget {
   final bool showClearButton;
   final Color? titleColor;
 
+  final BoxConstraints? prefixIconConstraints;
+
+
   const AppTextField({
     super.key,
     this.controller,
     this.onTap,
+    this.prefixIconConstraints,
     this.hintText,
     this.readOnly = false,
     this.maxLines = 1,
@@ -226,6 +230,10 @@ class _AppTextFieldState extends State<AppTextField> {
                 labelStyle: TextStyle(
                   color: widget.hintColor ?? context.greyDark,
                 ),
+                prefixIconConstraints: BoxConstraints(
+                  minWidth: 0,
+                  minHeight: 0,
+                ),
                 hintText: widget.hintText ?? '',
                 hintStyle: TextStyle(
                   color: widget.hintColor ?? context.hintTextColor,
@@ -271,7 +279,7 @@ class _AppTextFieldState extends State<AppTextField> {
                                       Icons.clear,
                                       color: widget.hintColor ??
                                           context.textSecondary,
-                                      size: 20,
+                                      size: 18,
                                     ),
                                   ),
                                 ),

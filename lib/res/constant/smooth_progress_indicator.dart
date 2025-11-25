@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:rider_pay/res/app_color.dart';
+import 'package:rider_pay_user/res/app_color.dart';
 
 class SmoothProgressIndicator extends StatefulWidget {
   final int totalMinutes;
@@ -40,8 +40,8 @@ class _SmoothProgressIndicatorState extends State<SmoothProgressIndicator>
   Widget _buildSmoothProgress(double value) {
     return Container(
       decoration: BoxDecoration(
-        gradient: const LinearGradient(
-          colors: [Colors.green, Colors.greenAccent],
+        gradient:  LinearGradient(
+          colors: [context.primary, context.greyLight],
           begin: Alignment.centerLeft,
           end: Alignment.centerRight,
         ),

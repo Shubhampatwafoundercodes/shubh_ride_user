@@ -1,111 +1,12 @@
-// import 'package:flutter/material.dart';
-// import 'package:flutter_screenutil/flutter_screenutil.dart';
-// import 'package:rider_pay/generated/assets.dart' show Assets;
-// import 'package:rider_pay/l10n/app_localizations.dart';
-// import 'package:rider_pay/res/app_color.dart';
-// import 'package:rider_pay/res/app_padding.dart';
-// import 'package:rider_pay/res/constant/const_text.dart';
-// import 'package:rider_pay/view/home/presentation/drawer/drawer_screen.dart';
-// import 'package:rider_pay/view/home/presentation/drawer/wallet_screen.dart' show PaymentTile;
-// import 'package:rider_pay/view/home/presentation/widget/common_btn_with_title.dart';
-// import 'package:rider_pay/view/home/presentation/widget/gradient_white_box.dart';
-//
-// import '../../../../utils/routes/routes_name.dart';
-//
-// class HelpScreen extends StatelessWidget {
-//   const HelpScreen({super.key});
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     final t = AppLocalizations.of(context)!;
-//     return Scaffold(
-//       backgroundColor: context.lightSkyBack,
-//       body: SafeArea(
-//         child: Column(
-//           crossAxisAlignment: CrossAxisAlignment.start,
-//           children: [
-//             /// Top Bar
-//             Row(
-//               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//               children: [
-//                 CommonBackBtnWithTitle(text: t.help),
-//                 Padding(
-//                   padding: EdgeInsets.only(right: 16.r),
-//                   child: IconButton(
-//                     icon: const Icon(Icons.confirmation_num_outlined),
-//                     onPressed: () {
-//                       // Navigator.pushNamed(context, RouteName.tickets);
-//                     },
-//                   ),
-//                 ),
-//               ],
-//             ),
-//
-//             Expanded(
-//               child: ListView(
-//                 padding: AppPadding.screenPaddingH,
-//                 children: [
-//                   SizedBox(height: 20.h),
-//
-//                   // /// Search Bar
-//                   // GradientContainer(
-//                   //   child: ListTile(
-//                   //     leading: const Icon(Icons.search),
-//                   //     title: ConstText(text: t.searchHelpTopics),
-//                   //   ),
-//                   // ),
-//
-//                   SizedBox(height: 16.h),
-//
-//                   /// Help Topics
-//                   PaymentTile(
-//                     title: t.rideFareIssues,
-//                     // avatar: Assets.imagesRideIcon,
-//                     trailing: const Icon(Icons.chevron_right),
-//                   ),
-//                   DrawerDivider(),
-//                   PaymentTile(
-//                     title: t.captainVehicleIssues,
-//                     // avatar: Assets.imagesDriverIcon,
-//                     trailing: const Icon(Icons.chevron_right),
-//                   ),
-//                   DrawerDivider(),
-//                   PaymentTile(
-//                     title: t.paymentIssues,
-//                     // avatar: Assets.imagesPaymentIcon,
-//                     trailing: const Icon(Icons.chevron_right),
-//                   ),
-//                   DrawerDivider(),
-//                   PaymentTile(
-//                     title: t.parcelIssues,
-//                     // avatar: Assets.imagesParcelIcon,
-//                     trailing: const Icon(Icons.chevron_right),
-//                   ),
-//                   DrawerDivider(),
-//                   PaymentTile(
-//                     title: t.otherTopics,
-//                     // avatar: Assets.imagesOtherIcon,
-//                     trailing: const Icon(Icons.chevron_right),
-//                   ),
-//                 ],
-//               ),
-//             ),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:rider_pay/res/app_color.dart';
-import 'package:rider_pay/res/app_constant.dart';
-import 'package:rider_pay/res/constant/const_text.dart';
-import 'package:rider_pay/view/home/presentation/widget/common_btn_with_title.dart';
+import 'package:rider_pay_user/res/app_color.dart';
+import 'package:rider_pay_user/res/app_constant.dart';
+import 'package:rider_pay_user/res/constant/const_text.dart';
+import 'package:rider_pay_user/view/home/presentation/widget/common_btn_with_title.dart';
 
-import 'package:rider_pay/view/home/provider/provider.dart';
-
+import 'package:rider_pay_user/view/home/provider/provider.dart';
 
 class HelpScreen extends ConsumerWidget {
   const HelpScreen({super.key});
@@ -126,15 +27,15 @@ class HelpScreen extends ConsumerWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 const CommonBackBtnWithTitle(text: "Help"),
-                Padding(
-                  padding: const EdgeInsets.only(right: 16),
-                  child: IconButton(
-                    icon: const Icon(Icons.confirmation_num_outlined),
-                    onPressed: () {
-                      // Navigator.pushNamed(context, RouteName.tickets);
-                    },
-                  ),
-                ),
+                // Padding(
+                //   padding: const EdgeInsets.only(right: 16),
+                //   child: IconButton(
+                //     icon: const Icon(Icons.confirmation_num_outlined),
+                //     onPressed: () {
+                //       // Navigator.pushNamed(context, RouteName.tickets);
+                //     },
+                //   ),
+                // ),
               ],
             ),
 

@@ -114,7 +114,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get explore => 'खोजें';
 
   @override
-  String get goPlacesWithRiderPay => 'राइडर पे के साथ जाएं';
+  String get goPlacesWithRiderPay => 'साथ जाएं';
 
   @override
   String get selectTheme => 'थीम चुनें';
@@ -328,4 +328,112 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get cancelRefund => 'रद्दीकरण और रिफंड';
+
+  @override
+  String get driver => 'ड्राइवर?';
+
+  @override
+  String get setting => 'सेटिंग्स';
+
+  @override
+  String get getEarning => 'कमाई प्राप्त करें';
+
+  @override
+  String get drop => 'ड्रॉप';
+
+  @override
+  String get currentLocation => 'वर्तमान स्थान';
+
+  @override
+  String get dropLocation => 'ड्रॉप स्थान';
+
+  @override
+  String get cashbackMsg => 'आपको कैशबैक मिलेगा, अपनी राइड पूरी करें!';
+
+  @override
+  String get noVehicle => 'कोई वाहन उपलब्ध नहीं है';
+
+  @override
+  String get bookRide => 'राइड बुक करें';
+
+  @override
+  String get cash => 'नकद';
+
+  @override
+  String get online => 'ऑनलाइन';
+
+  @override
+  String get searchingDriver => 'ड्राइवर की तलाश जारी...';
+
+  @override
+  String get driverFound => 'ड्राइवर मिल गया';
+
+  @override
+  String get pleaseConfirmPayment => 'कृपया भुगतान की पुष्टि करें';
+
+  @override
+  String get rideInProgress => 'राइड जारी है';
+
+  @override
+  String get driverArrivedPickup => 'ड्राइवर पिकअप पर पहुँच गया';
+
+  @override
+  String get driverOnTheWay => 'ड्राइवर रास्ते में है';
+
+  @override
+  String get waitingDriverResponse => 'ड्राइवर के जवाब का इंतजार...';
+
+  @override
+  String get rideCompleted => 'राइड पूरी हो गई!';
+
+  @override
+  String get tripCompletedMsg => 'आपकी यात्रा सफलतापूर्वक पूरी हो गई है।';
+
+  @override
+  String get searchNearbyDrivers => '⏳ आसपास के ड्राइवरों की तलाश...';
+
+  @override
+  String get accept => 'स्वीकार करें';
+
+  @override
+  String get paymentPending => 'भुगतान लंबित';
+
+  @override
+  String get completePaymentMsg => 'आगे बढ़ने के लिए कृपया अपना भुगतान पूरा करें।';
+
+  @override
+  String get call => 'कॉल';
+
+  @override
+  String get vehicleNumber => 'वाहन नंबर: ';
+
+  @override
+  String get startRidePin => 'PIN का उपयोग करके अपनी राइड शुरू करें';
+
+  @override
+  String get pickupFrom => 'पिकअप स्थान';
+
+  @override
+  String get dropTo => 'ड्रॉप स्थान';
+
+  @override
+  String get goToMap => 'मैप पर जाएं';
+
+  @override
+  String get completeOnlinePayment => 'ऑनलाइन भुगतान पूरा करें';
+
+  @override
+  String get ok => 'ठीक है';
+
+  @override
+  String get tripDetails => 'यात्रा विवरण';
+
+  @override
+  String get chatInterfaceWillBeImplementedHere => 'Chat interface will be implemented here';
+
+  @override
+  String get confirmPaymentOf => 'Confirm payment of';
+
+  @override
+  String get forThisRide => 'for this ride?';
 }

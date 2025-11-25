@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:rider_pay/l10n/app_localizations.dart';
-import 'package:rider_pay/res/app_color.dart';
-import 'package:rider_pay/res/app_constant.dart';
-import 'package:rider_pay/res/app_padding.dart' show AppPadding;
-import 'package:rider_pay/res/constant/const_text.dart';
-import 'package:rider_pay/res/format/date_time_formater.dart';
-import 'package:rider_pay/view/home/presentation/drawer/profile/wallet_screen.dart'
+import 'package:rider_pay_user/l10n/app_localizations.dart';
+import 'package:rider_pay_user/res/app_color.dart';
+import 'package:rider_pay_user/res/app_constant.dart';
+import 'package:rider_pay_user/res/app_padding.dart' show AppPadding;
+import 'package:rider_pay_user/res/constant/const_text.dart';
+import 'package:rider_pay_user/res/format/date_time_formater.dart';
+import 'package:rider_pay_user/view/home/presentation/drawer/profile/wallet_screen.dart'
     show SectionHeader;
-import 'package:rider_pay/view/home/presentation/widget/common_btn_with_title.dart';
-import 'package:rider_pay/view/home/presentation/widget/gradient_white_box.dart';
-import 'package:rider_pay/view/home/provider/provider.dart';
+import 'package:rider_pay_user/view/home/presentation/widget/common_btn_with_title.dart';
+import 'package:rider_pay_user/view/home/presentation/widget/gradient_white_box.dart';
+import 'package:rider_pay_user/view/home/provider/provider.dart';
 
 class MyRewardScreen extends ConsumerStatefulWidget {
   const MyRewardScreen({super.key});
@@ -41,7 +41,6 @@ class _MyRewardScreenState extends ConsumerState<MyRewardScreen> {
     }
 
     final vouchers = voucherState.vouchers?.data?.vouchers ?? [];
-    print("Shubham $vouchers");
     final totalAmount = voucherState.vouchers?.data?.totalAmount ?? 0;
 
     return Scaffold(

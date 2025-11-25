@@ -2,33 +2,37 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart' show LatLng;
-import 'package:rider_pay/main.dart';
-import 'package:rider_pay/res/app_btn.dart';
-import 'package:rider_pay/res/app_color.dart';
-import 'package:rider_pay/res/app_constant.dart';
-import 'package:rider_pay/res/app_padding.dart';
-import 'package:rider_pay/res/app_size.dart';
-import 'package:rider_pay/res/constant/common_bottom_sheet.dart';
-import 'package:rider_pay/res/constant/common_network_img.dart';
-import 'package:rider_pay/res/constant/const_text.dart';
-import 'package:rider_pay/res/constant/custom_slider_dialog.dart';
-import 'package:rider_pay/utils/routes/routes_name.dart';
-import 'package:rider_pay/utils/utils.dart';
-import 'package:rider_pay/view/home/data/model/address_type_model.dart';
-import 'package:rider_pay/view/home/provider/provider.dart';
-import 'package:rider_pay/view/map/presentation/controller/map_controller.dart';
-import 'package:rider_pay/view/map/provider/map_provider.dart';
-import 'package:rider_pay/view/share_pref/recent_place_provider.dart'
+import 'package:rider_pay_user/main.dart';
+import 'package:rider_pay_user/res/app_btn.dart';
+import 'package:rider_pay_user/res/app_color.dart';
+import 'package:rider_pay_user/res/app_constant.dart';
+import 'package:rider_pay_user/res/app_size.dart';
+import 'package:rider_pay_user/res/constant/common_bottom_sheet.dart';
+import 'package:rider_pay_user/res/constant/common_network_img.dart';
+import 'package:rider_pay_user/res/constant/const_text.dart';
+import 'package:rider_pay_user/res/constant/custom_slider_dialog.dart';
+import 'package:rider_pay_user/utils/routes/routes_name.dart';
+import 'package:rider_pay_user/utils/utils.dart';
+import 'package:rider_pay_user/view/home/provider/provider.dart';
+import 'package:rider_pay_user/view/map/presentation/controller/check_zone_notifer.dart';
+import 'package:rider_pay_user/view/map/presentation/controller/state/map_state.dart';
+import 'package:rider_pay_user/view/map/provider/map_provider.dart';
+import 'package:rider_pay_user/view/share_pref/recent_place_provider.dart'
     show recentPlacesProvider;
-import 'package:rider_pay/view/widget/location_on_popup.dart';
+import 'package:rider_pay_user/view/widget/location_on_popup.dart';
+import 'package:rider_pay_user/view/widget/service_not_available_popup.dart';
 
-class AddressListWidget extends ConsumerWidget {
+class AddressListWidget extends ConsumerStatefulWidget {
   final bool isFromSearch;
   final TextEditingController? pickupController;
   final TextEditingController? destinationController;
   final LocationType? activeType;
   final FocusNode? pickupFocus;
   final FocusNode? destinationFocus;
+
+  final VoidCallback? onSelected;
+
+
   const AddressListWidget({
     super.key,
     required this.isFromSearch,
@@ -37,12 +41,22 @@ class AddressListWidget extends ConsumerWidget {
     this.activeType,
     this.pickupFocus,
     this.destinationFocus,
+    this.onSelected
   });
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<AddressListWidget> createState() => _AddressListWidgetState();
+}
+
+class _AddressListWidgetState extends ConsumerState<AddressListWidget> {
+  @override
+  Widget build(BuildContext context) {
     final recentPlaces = ref.watch(recentPlacesProvider);
     final locState = ref.watch(locationServiceProvider);
+    final mapCon = ref.watch(mapControllerProvider);
+    final checkZone = ref.watch(checkZoneProvider);
+    // final checkZoneState = ref.read(checkZoneProvider.notifier);
+    final mapNotifier = ref.watch(mapControllerProvider.notifier);
 
     return Container(
       decoration: BoxDecoration(color: context.greyLight),
@@ -50,7 +64,6 @@ class AddressListWidget extends ConsumerWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: recentPlaces.asMap().entries.map((entry) {
-          final index = entry.key;
           final place = entry.value;
           final isFav = place["isFav"] ?? false;
           final type = place["type"];
@@ -58,94 +71,108 @@ class AddressListWidget extends ConsumerWidget {
             minTileHeight: 4,
             minVerticalPadding: 8,
             onTap: () async {
-              final mapState = ref.read(mapControllerProvider);
-              if (mapState.isMapProcessing || mapState.isLocationLoading) {
-                debugPrint("Tap ignored: already processing...");
-                return;
-              }
+              if (mapCon.isMapProcessing || mapCon.isLocationLoading ||checkZone.isLoading) return;
+              final double? lat = place["lat"];
+              final double? lng = place["lng"];
+              if (lat == null || lng == null) return;
+              final destLatLng = LatLng(lat, lng);
+              final address = "${place["title"]}, ${place["subtitle"]}";
+              final mapNotifierLocal = ref.read(mapControllerProvider.notifier);
+              // final checkZoneNotifier = ref.read(checkZoneProvider.notifier);
+              // final locationNotifier = ref.read(locationServiceProvider.notifier);
 
               try {
-                final lat = place["lat"];
-                final lng = place["lng"];
-                final destLatLng = LatLng(lat, lng);
-                final address = "${place["title"]}, ${place["subtitle"]}";
+                if (widget.isFromSearch) {
+                  if (widget.activeType == LocationType.pickup) {
+                    widget.pickupController?.text = address;
+                    mapNotifier.updatePickup(destLatLng, address);
+                    if (widget.destinationController?.text.isEmpty ??  true) {
+                      FocusScope.of(context).requestFocus(widget.destinationFocus);
 
-                if (isFromSearch) {
-                  if (activeType == LocationType.pickup) {
-                    pickupController?.text = address;
-
-                    if (destinationController?.text.isEmpty ?? true) {
-                      FocusScope.of(context).requestFocus(destinationFocus);
-
-                      final addr = await ref
-                          .read(mapControllerProvider.notifier)
-                          .fetchCurrentLocation(type: LocationType.destination);
-                      destinationController?.text = addr;
                     }
-                  } else {
-                    destinationController?.text = address;
 
-                    if (pickupController?.text.isEmpty ?? true) {
-                      FocusScope.of(context).requestFocus(pickupFocus);
-
-                      final addr = await ref
-                          .read(mapControllerProvider.notifier)
-                          .fetchCurrentLocation(type: LocationType.pickup);
-                      pickupController?.text = addr;
-                    }
                   }
 
-                  final isNav = await ref
-                      .read(mapControllerProvider.notifier)
-                      .selectLocationAndUpdateMap(
-                        type: activeType ?? LocationType.destination,
-                        latLng: destLatLng,
-                        address: address,
-                      );
-                  if (isNav) {
-                    Navigator.pushReplacementNamed(context, RouteName.mapScreen);
-                  }
-                } else {
-                  final pickupAddress = await ref
-                      .read(mapControllerProvider.notifier)
-                      .fetchCurrentLocation(type: LocationType.pickup);
+                  else {
 
-                  if (pickupAddress.isEmpty) {
-                    // Agar empty mila → iska matlab service off ya permission deny
+                    widget.destinationController?.text = address;
+                    mapNotifierLocal.updateDestination(destLatLng, address);
+                    if (widget.pickupController?.text.isEmpty ?? true) {
+                     await mapNotifierLocal.fetchCurrentLocation(type: LocationType.pickup,);
+                      widget.pickupController?.text = mapCon.pickupAddress.toString();
+                    }
+
+
+                  }
+                  widget.onSelected?.call();
+
+
+                  // await Future.delayed(const Duration(milliseconds: 900));
+                  // if (!mounted) return;
+                  // await _handleZoneCheckAndNavigate();
+                }
+
+
+
+
+
+
+                else {
+                  final addr = await mapNotifierLocal.fetchCurrentLocation(type: LocationType.pickup,);
+
+                  await Future.delayed(const Duration(seconds: 1));
+
+                  final readyPickup = mapCon.pickupLocation;
+
+                  if (readyPickup == null || addr.isEmpty)  {
                     CustomSlideDialog.show(
                       context: context,
                       child: LocationOnPopup(
                         isBlocked: locState.isBlocked,
                         isServiceOff:
-                            !locState.isGranted && !locState.isBlocked,
+                        !locState.isGranted && !locState.isBlocked,
                         onAction: () async {
-                          final granted = await ref
-                              .read(locationServiceProvider.notifier)
-                              .ensurePermission();
+                          final granted = await ref.read(locationServiceProvider.notifier).ensurePermission();
                           if (granted) {
-                            Navigator.pop(context);
-                            toastMsg("Location enabled, tap again to continue");
+                            // Navigator.pop(context);
+                            toastMsg("✅ Location enabled, please wait...");
+                            final addr2 = await mapNotifier.fetchCurrentLocation(type: LocationType.pickup,);
+                            if (addr2.isNotEmpty && mapCon.pickupLocation != null) {
+                              mapNotifierLocal.updateDestination(destLatLng, address);
+                              await Future.delayed(const Duration(milliseconds: 500));
+                              await _handleZoneCheckAndNavigate();
+
+                              // Navigator.pushNamedAndRemoveUntil(
+                              //   context,
+                              //   RouteName.mapScreen,
+                              //       (routes) => false,
+                              // );
+                            } else {
+                              toastMsg(
+                                "⚠️ Could not get location, try again.",
+                              );
+                            }
                           }
                         },
                       ),
                     );
                     return;
                   }
+                  mapNotifier.updateDestination(destLatLng, address);
 
-                  final isNavigation = await ref
-                      .read(mapControllerProvider.notifier)
-                      .selectLocationAndUpdateMap(
-                        type: LocationType.destination,
-                        latLng: destLatLng,
-                        address: "${place["title"]}, ${place["subtitle"]}",
-                      );
+                  await _handleZoneCheckAndNavigate();
 
-                  if (isNavigation) {
-                    Navigator.pushReplacementNamed(context, RouteName.mapScreen);
-                  }
+                  // if (readyPickup != null) {
+                  //   print("🚀 Navigating to MapScreen...");
+                  //   Navigator.pushNamedAndRemoveUntil(
+                  //     context,
+                  //     RouteName.mapScreen,
+                  //     (routes) => false,
+                  //   );
+                  // }
                 }
               } catch (e) {
-                debugPrint("Error selecting location: $e");
+                debugPrint("❌ Error selecting address: $e");
               }
             },
             leading: isFav
@@ -286,6 +313,38 @@ class AddressListWidget extends ConsumerWidget {
         return Icons.fitness_center;
       default:
         return Icons.place;
+    }
+  }
+
+  Future<void> _handleZoneCheckAndNavigate() async {
+    final mapCon = ref.read(mapControllerProvider);
+    final checkZone = ref.read(checkZoneProvider.notifier);
+    print("🗺 pickup: ${mapCon.pickupLocation}");
+    print("🗺 destination: ${mapCon.destinationLocation}");
+    if (mapCon.pickupLocation == null || mapCon.destinationLocation == null) {
+      toastMsg("Please select both pickup and drop locations");
+      return;
+    }
+    print("🚀 Checking zone...");
+
+    final isInZone = await checkZone.checkZone(
+      pickLat: mapCon.pickupLocation!.latitude.toString(),
+      pickLng: mapCon.pickupLocation!.longitude.toString(),
+      destLat: mapCon.destinationLocation!.latitude.toString(),
+      destLng: mapCon.destinationLocation!.longitude.toString(),
+    );
+    print("✅ Zone API response: $isInZone");
+    if (isInZone) {
+      Navigator.pushNamedAndRemoveUntil(context, RouteName.mapScreen,(routes)=>false);
+    } else {
+      CustomSlideDialog.show(
+        context: context,
+        child: ZoneRejectPopup(
+          onClose: () {
+            Navigator.pop(context);
+          },
+        ),
+      );
     }
   }
 }

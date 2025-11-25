@@ -1,9 +1,11 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:rider_pay/view/map/data/models/map_search_address_model.dart';
-import 'package:rider_pay/view/map/domain/repositories/map_repo.dart';
-import 'package:rider_pay/view/map/presentation/controller/map_controller.dart';
+import 'package:rider_pay_user/view/map/data/models/map_search_address_model.dart';
+import 'package:rider_pay_user/view/map/domain/repositories/map_repo.dart';
+// ignore: unused_import
+import 'package:rider_pay_user/view/map/presentation/controller/map_controller.dart';
+import 'package:rider_pay_user/view/map/presentation/controller/state/map_state.dart' show LocationType;
 
 
 

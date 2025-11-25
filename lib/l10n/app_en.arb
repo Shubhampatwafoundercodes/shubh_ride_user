@@ -34,7 +34,7 @@
     "other": "Other",
     "alreadyHaveAccount": "Already have an account?",
   "explore": "Explore",
-  "goPlacesWithRiderPay": "Go Places with Rider Pay",
+  "goPlacesWithRiderPay": "Go Places",
   "selectTheme": "Select Theme",
   "theme": "Theme",
   "systemDefault": "System Default",
@@ -109,8 +109,49 @@
   "privacyPolicy": "Privacy Policy",
   "safetyConcern": "Safety Concern",
   "aboutUs": "About Us",
-  "cancelRefund": "Cancel & Refund"
+  "cancelRefund": "Cancel & Refund",
+  "driver": "Driver?",
+  "setting": "Setting",
+  "getEarning": "Get Earning",
+  "drop": "Drop",
+  "currentLocation": "Current Location",
+  "dropLocation": "Drop Location",
+  "cashbackMsg": "You get cashback complete your ride cashback!",
+  "noVehicle": "No vehicles available",
+  "bookRide": "Book Ride",
+  "cash": "Cash",
+  "online": "Online",
+  "searchingDriver": "Searching for driver...",
+  "driverFound": "Driver(s) found",
 
+  "pleaseConfirmPayment": "Please confirm payment",
+  "rideInProgress": "Ride in progress",
+  "driverArrivedPickup": "Driver arrived at pickup",
+  "driverOnTheWay": "Driver on the way",
+  "waitingDriverResponse": "Waiting for driver response",
+
+  "rideCompleted": "Ride Completed!",
+  "tripCompletedMsg": "Your trip has been completed successfully.",
+
+  "searchNearbyDrivers": "⏳ Searching for nearby drivers...",
+  "accept": "Accept",
+  "paymentPending": "Payment Pending",
+  "completePaymentMsg": "Please complete your payment to continue.",
+
+  "call": "Call",
+  "vehicleNumber": "Vehicle Number: ",
+  "startRidePin": "Start your ride using PIN",
+
+  "pickupFrom": "Pickup From",
+  "dropTo": "Drop To",
+  "goToMap": "Go to Map",
+
+  "completeOnlinePayment": "Complete Online Payment",
+  "ok": "OK",
+  "tripDetails": "Trip Details",
+  "chatInterfaceWillBeImplementedHere": "Chat interface will be implemented here",
+  "confirmPaymentOf": "Confirm payment of",
+  "forThisRide": "for this ride?"
 
 
 }

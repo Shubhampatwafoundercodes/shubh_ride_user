@@ -2,8 +2,8 @@
 // import 'package:flutter/material.dart';
 //
 // import 'package:flutter_riverpod/flutter_riverpod.dart';
-// import 'package:rider_pay/view/onboarding/controller/state/onboard_state.dart';
-// import 'package:rider_pay/view/onboarding/model/onboard_model.dart';
+// import 'package:rider_pay_user/view/onboarding/controller/state/onboard_state.dart';
+// import 'package:rider_pay_user/view/onboarding/model/onboard_model.dart';
 //
 // import '../../../generated/assets.dart' show Assets;
 //

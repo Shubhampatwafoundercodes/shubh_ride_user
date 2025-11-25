@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:rider_pay/main.dart';
-import 'package:rider_pay/res/app_btn.dart' show AppBtn;
-import 'package:rider_pay/res/app_color.dart';
-import 'package:rider_pay/res/app_constant.dart' show AppConstant;
-import 'package:rider_pay/res/app_padding.dart';
-import 'package:rider_pay/res/app_size.dart';
-import 'package:rider_pay/res/constant/common_bottom_sheet.dart';
-import 'package:rider_pay/res/constant/const_text.dart';
-import 'package:rider_pay/utils/routes/routes_name.dart';
-import 'package:rider_pay/view/home/provider/provider.dart';
-import 'package:rider_pay/view/map/provider/map_provider.dart';
-import 'package:rider_pay/view/share_pref/user_provider.dart';
+import 'package:rider_pay_user/res/app_btn.dart' show AppBtn;
+import 'package:rider_pay_user/res/app_color.dart';
+import 'package:rider_pay_user/res/app_constant.dart' show AppConstant;
+import 'package:rider_pay_user/res/app_padding.dart';
+import 'package:rider_pay_user/res/app_size.dart';
+import 'package:rider_pay_user/res/constant/common_bottom_sheet.dart';
+import 'package:rider_pay_user/res/constant/const_text.dart';
+import 'package:rider_pay_user/utils/routes/routes_name.dart';
+import 'package:rider_pay_user/view/firebase_service/ride/notifer/ride_notifer.dart';
+import 'package:rider_pay_user/view/home/provider/provider.dart';
+import 'package:rider_pay_user/view/map/presentation/controller/ride_flow_controller.dart';
+import 'package:rider_pay_user/view/map/provider/map_provider.dart';
+import 'package:rider_pay_user/view/share_pref/user_provider.dart';
 
 class CancelReasonSheet extends ConsumerWidget {
   const CancelReasonSheet({super.key});
@@ -110,6 +111,7 @@ class CancelConfirmationSheet extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final  destinationAddress= ref.read(mapControllerProvider).destinationAddress;
     final rideState=ref.read(rideBookingProvider);
+    final mapCon=ref.read(mapControllerProvider.notifier);
 
     return Column(
       mainAxisSize: MainAxisSize.min,
@@ -146,24 +148,72 @@ class CancelConfirmationSheet extends ConsumerWidget {
         ),
         AppSizes.spaceH(16.h),
 
+        // AppBtn(
+        //   title: "Cancel my ride",
+        //             loading:rideState.isLoading ,
+        //             margin: AppPadding.screenPaddingV,
+        //   onTap:rideState.isLoading?null: () async {
+        //     final mapNot= ref.read(mapNotifierProvider.notifier);
+        //     final userId=ref.read(userProvider.notifier).userId.toString()??"0";
+        //    Map<String,dynamic> data= {
+        //      "user_id":userId,
+        //      "ride_id":rideState.rideId,
+        //     "reason_id" : reasonId
+        //   };
+        //     final rideBook=ref.read(rideBookingProvider.notifier);
+        //     rideBook.cancelRideApi(data);
+        //     mapCon.clearTemporaryState();
+        //     mapNot.resetPlaceDetails();
+        //     mapNot.resetSearchPlacesData();
+        //     Navigator.pushReplacementNamed(context, RouteName.home);
+        //
+        //
+        //   },
+        // ),
         AppBtn(
           title: "Cancel my ride",
-                    loading:rideState.isLoading ,
-                    margin: AppPadding.screenPaddingV,
-          onTap:rideState.isLoading?null: () async {
-            final userId=ref.read(userProvider)?.id.toString()??"0";
-           Map<String,dynamic> data= {
-             "user_id":userId,
-              "ride_id":rideState.rideId,
-            "reason_id" : reasonId
-          };
-            final rideBook=ref.read(rideBookingProvider.notifier);
-            rideBook.cancelRideApi(data);
-            // Navigator.pushReplacementNamed(context, RouteName.home);
+          loading: rideState.isLoading|| ref.watch(rideNotifierProvider).isLoading,
+          margin: AppPadding.screenPaddingV,
+          onTap: rideState.isLoading
+              ? null
+              : () async {
+            try {
+              final mapNot = ref.read(mapNotifierProvider.notifier);
+              final userId = ref.read(userProvider.notifier).userId?.toString() ?? "0";
+              final rideRepo = ref.read(rideRepoProvider);
+              final rideFlow = ref.read(rideFlowProvider.notifier);
+              final rideBook = ref.read(rideBookingProvider.notifier);
+              final rideNotifier = ref.read(rideNotifierProvider.notifier);
+              final rideNotifierSta = ref.read(rideNotifierProvider);
+              final rideId=rideBook.pendingRide?.rideId??rideNotifierSta.currentRide?.rideId;
 
+              // 🔹 1. Cancel API Call (for backend)
+              Map<String, dynamic> data = {
+                "user_id": userId,
+                "ride_id": rideId,
+                "reason_id": reasonId,
+              };
 
+              await rideBook.cancelRideApi(data);
+              if (rideId!=null) {
+                rideNotifier.cancelRideAndStopListening(rideId);
+                await rideRepo.deleteRide(rideId);
+              } else {
+              }
+              rideNotifier.stopListening();
+              mapCon.clearTemporaryState();
+              mapNot.resetPlaceDetails();
+              mapNot.resetSearchPlacesData();
+              rideFlow.goTo(RideStep.vehicleList);
+              if (context.mounted) {
+                Navigator.pushNamedAndRemoveUntil(context, RouteName.home,(route)=>false);
+              }
+            } catch (e, st) {
+              debugPrint("❌ Error cancelling ride: $e $st");
+            }
           },
         ),
+
 
         AppBtn(
           title: "Keep searching",

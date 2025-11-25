@@ -1,24 +1,23 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:rider_pay/helper/network/network_api_service_http.dart';
-import 'package:rider_pay/view/home/data/repo_impl/address_type_repo_impl.dart';
-import 'package:rider_pay/view/home/data/repo_impl/app_info_impl.dart';
-import 'package:rider_pay/view/home/data/repo_impl/profile_repo_imp.dart';
-import 'package:rider_pay/view/home/data/repo_impl/reason_of_cancel_imp.dart';
-import 'package:rider_pay/view/home/data/repo_impl/ride_booking_repo_imp.dart';
-import 'package:rider_pay/view/home/data/repo_impl/vehicle_type_repo_impl.dart';
-import 'package:rider_pay/view/home/data/repo_impl/wallet_repo_imp.dart';
-import 'package:rider_pay/view/home/domain/repo/address_type_repo.dart';
-import 'package:rider_pay/view/home/domain/repo/app_Info_repo.dart';
-import 'package:rider_pay/view/home/domain/repo/profile_repo.dart';
-import 'package:rider_pay/view/home/presentation/controller/address_type_notifier.dart';
-import 'package:rider_pay/view/home/presentation/controller/app_info_notifier.dart';
-import 'package:rider_pay/view/home/presentation/controller/cms_term_conditon_notifer.dart';
-import 'package:rider_pay/view/home/presentation/controller/profile_notifier.dart';
-import 'package:rider_pay/view/home/presentation/controller/reason_of_cancel_notifier.dart';
-import 'package:rider_pay/view/home/presentation/controller/ride_booking_notifier.dart';
-import 'package:rider_pay/view/home/presentation/controller/vehicle_type_notifier.dart';
-import 'package:rider_pay/view/home/presentation/controller/voucher_notifer.dart';
-import 'package:rider_pay/view/home/presentation/controller/wallet_notifier.dart';
+import 'package:rider_pay_user/helper/network/network_api_service_http.dart';
+import 'package:rider_pay_user/view/home/data/repo_impl/address_type_repo_impl.dart';
+import 'package:rider_pay_user/view/home/data/repo_impl/app_info_impl.dart';
+import 'package:rider_pay_user/view/home/data/repo_impl/profile_repo_imp.dart';
+import 'package:rider_pay_user/view/home/data/repo_impl/reason_of_cancel_imp.dart';
+import 'package:rider_pay_user/view/home/data/repo_impl/ride_booking_repo_imp.dart';
+import 'package:rider_pay_user/view/home/data/repo_impl/vehicle_type_repo_impl.dart';
+import 'package:rider_pay_user/view/home/data/repo_impl/wallet_repo_imp.dart';
+import 'package:rider_pay_user/view/home/domain/repo/address_type_repo.dart';
+import 'package:rider_pay_user/view/home/domain/repo/app_Info_repo.dart';
+import 'package:rider_pay_user/view/home/presentation/controller/address_type_notifier.dart';
+import 'package:rider_pay_user/view/home/presentation/controller/app_info_notifier.dart';
+import 'package:rider_pay_user/view/home/presentation/controller/cms_term_conditon_notifer.dart';
+import 'package:rider_pay_user/view/home/presentation/controller/profile_notifier.dart';
+import 'package:rider_pay_user/view/home/presentation/controller/reason_of_cancel_notifier.dart';
+import 'package:rider_pay_user/view/home/presentation/controller/ride_booking_notifier.dart';
+import 'package:rider_pay_user/view/home/presentation/controller/vehicle_type_notifier.dart';
+import 'package:rider_pay_user/view/home/presentation/controller/voucher_notifer.dart';
+import 'package:rider_pay_user/view/home/presentation/controller/wallet_notifier.dart';
 /// app info api
 final appInfoRepoProvider = Provider<AppInfoRepo>((ref) {
   return AppInfoImpl(NetworkApiServices(ref));
@@ -93,5 +92,5 @@ StateNotifierProvider<ReasonOfCancelNotifier, ReasonOfCancelState>(
 /// confirm Booking provider
 final rideBookingProvider =
 StateNotifierProvider<RideBookingNotifier, RideBookingState>(
-      (ref) => RideBookingNotifier(RideBookingImp((NetworkApiServices(ref)))),
+      (ref) => RideBookingNotifier(RideBookingImp((NetworkApiServices(ref))),ref),
 );

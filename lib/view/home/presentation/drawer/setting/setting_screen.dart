@@ -1,20 +1,21 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:rider_pay/l10n/app_localizations.dart';
-import 'package:rider_pay/res/app_btn.dart';
-import 'package:rider_pay/res/app_color.dart';
-import 'package:rider_pay/res/app_size.dart';
-import 'package:rider_pay/res/constant/common_bottom_sheet.dart';
-import 'package:rider_pay/res/constant/const_text.dart';
-import 'package:rider_pay/utils/routes/routes_name.dart';
-import 'package:rider_pay/view/home/presentation/controller/profile_notifier.dart';
-import 'package:rider_pay/view/home/presentation/drawer/drawer_screen.dart';
-import 'package:rider_pay/view/home/presentation/drawer/setting/cms_term_condition_screen.dart';
-import 'package:rider_pay/view/home/presentation/widget/common_btn_with_title.dart';
-import 'package:rider_pay/view/home/provider/provider.dart'
+import 'package:rider_pay_user/l10n/app_localizations.dart';
+import 'package:rider_pay_user/res/app_btn.dart';
+import 'package:rider_pay_user/res/app_color.dart';
+import 'package:rider_pay_user/res/app_size.dart';
+import 'package:rider_pay_user/res/constant/common_bottom_sheet.dart';
+import 'package:rider_pay_user/res/constant/const_text.dart';
+import 'package:rider_pay_user/utils/routes/routes_name.dart';
+import 'package:rider_pay_user/view/home/presentation/controller/profile_notifier.dart';
+import 'package:rider_pay_user/view/home/presentation/drawer/drawer_screen.dart';
+import 'package:rider_pay_user/view/home/presentation/drawer/setting/cms_term_condition_screen.dart';
+import 'package:rider_pay_user/view/home/presentation/widget/common_btn_with_title.dart';
+import 'package:rider_pay_user/view/home/provider/provider.dart'
     show profileProvider, cmsProvider;
-import 'package:rider_pay/view/share_pref/user_provider.dart';
+import 'package:rider_pay_user/view/share_pref/user_provider.dart';
 
 class SettingsScreen extends ConsumerStatefulWidget {
   const SettingsScreen({super.key});
@@ -73,7 +74,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
+                        CupertinoPageRoute(
                           builder: (_) => CmsPageScreen(
                             title: t.termsConditions,
                             htmlData:
@@ -93,7 +94,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
+                        CupertinoPageRoute(
                           builder: (_) => CmsPageScreen(
                             title: t.privacyPolicy,
                             htmlData:
@@ -113,7 +114,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
+                        CupertinoPageRoute(
                           builder: (_) => CmsPageScreen(
                             title: t.safetyConcern,
                             htmlData:
@@ -196,13 +197,13 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                   ),
                   const DrawerDivider(),
 
-                  DrawerItem(
-                    showArrow: false,
-                    subLabel: "1.0.0",
-                    icon: Icons.info_outline,
-                    label: "App Version",
-                    onTap: () {},
-                  ),
+                  // DrawerItem(
+                  //   showArrow: false,
+                  //   subLabel: "1.0.0",
+                  //   icon: Icons.info_outline,
+                  //   label: "App Version",
+                  //   onTap: () {},
+                  // ),
 
                   AppSizes.spaceH(30),
                 ],

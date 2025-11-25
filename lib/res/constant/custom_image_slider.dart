@@ -22,7 +22,6 @@ class CustomImageSlider extends StatefulWidget {
 }
 
 class _CustomImageSliderState extends State<CustomImageSlider> {
-  int _current = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +52,7 @@ class _CustomImageSliderState extends State<CustomImageSlider> {
                       (context, child, loadingProgress) {
                     if (loadingProgress == null) return child;
                     return const Center(
-                        child: CircularProgressIndicator());
+                        child: SizedBox.shrink());
                   },
                   errorBuilder: (context, error, stackTrace) {
                     return const Icon(Icons.broken_image,

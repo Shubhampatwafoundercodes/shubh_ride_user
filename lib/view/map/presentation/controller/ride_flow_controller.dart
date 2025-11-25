@@ -3,9 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 enum RideStep {
   vehicleList,
-  confirmPickupLocation,
+  // confirmPickupLocation,
   waitingForDriver,
-  rideInProgress,
 }
 
 @immutable
@@ -18,7 +17,7 @@ class RideFlowState {
 
   const RideFlowState({
     this.steps = const [RideStep.vehicleList],
-    this.selectedVehicleId = 0,
+    this.selectedVehicleId = -1,
     this.selectedFare,
     this.selectedPaymentMethod = "Cash",
     this.sheetExtent = 0.3,
@@ -28,7 +27,7 @@ class RideFlowState {
 
   RideFlowState copyWith({
     List<RideStep>? steps,
-    int? selectedVehicleIndex,
+    int? selectedVehicleId,
     double? selectedFare,
 
     String? selectedPaymentMethod,
@@ -36,10 +35,8 @@ class RideFlowState {
   }) {
     return RideFlowState(
       steps: steps ?? this.steps,
-      selectedVehicleId: selectedVehicleIndex ?? this.selectedVehicleId,
+      selectedVehicleId: selectedVehicleId ?? this.selectedVehicleId,
       selectedFare: selectedFare ?? this.selectedFare,
-
-
       selectedPaymentMethod: selectedPaymentMethod ?? this.selectedPaymentMethod,
       sheetExtent: sheetExtent ?? this.sheetExtent,
     );
@@ -76,11 +73,21 @@ class RideFlowController extends StateNotifier<RideFlowState> {
   }
 
   /// Select a vehicle
-  void selectVehicle(int id, double? fare) {
+  void selectVehicle(int id, {required double fare}) {
     state = state.copyWith(
-      selectedVehicleIndex: id,
+      selectedVehicleId: id,
       selectedFare: fare,
     );
+  }
+  void clearAll() {
+    state = state.copyWith(
+      selectedVehicleId: -1,
+      selectedFare: null,
+      selectedPaymentMethod: "Cash",
+      steps: [RideStep.vehicleList],
+
+    );
+    debugPrint("🧹 Cleared all ride selections");
   }
 
   /// Select payment method

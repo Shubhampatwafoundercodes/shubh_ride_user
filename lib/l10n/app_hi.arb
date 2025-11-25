@@ -34,7 +34,7 @@
   "other": "अन्य",
   "alreadyHaveAccount": "क्या आपके पास पहले से खाता है?",
   "explore": "खोजें",
-  "goPlacesWithRiderPay": "राइडर पे के साथ जाएं",
+  "goPlacesWithRiderPay": "साथ जाएं",
   "selectTheme": "थीम चुनें",
   "theme": "थीम",
   "systemDefault": "सिस्टम डिफ़ॉल्ट",
@@ -110,7 +110,46 @@
   "privacyPolicy": "गोपनीयता नीति",
   "safetyConcern": "सुरक्षा संबंधित",
   "aboutUs": "हमारे बारे में",
-  "cancelRefund": "रद्दीकरण और रिफंड"
+  "cancelRefund": "रद्दीकरण और रिफंड",
+  "driver": "ड्राइवर?",
+  "getEarning": "कमाई प्राप्त करें",
+  "setting": "सेटिंग्स",
+  "drop": "ड्रॉप",
+  "currentLocation": "वर्तमान स्थान",
+  "dropLocation": "ड्रॉप स्थान",
+  "cashbackMsg": "आपको कैशबैक मिलेगा, अपनी राइड पूरी करें!",
+  "noVehicle": "कोई वाहन उपलब्ध नहीं है",
+  "bookRide": "राइड बुक करें",
+  "cash": "नकद",
+  "online": "ऑनलाइन",
+  "searchingDriver": "ड्राइवर की तलाश जारी...",
+  "driverFound": "ड्राइवर मिल गया",
 
+  "pleaseConfirmPayment": "कृपया भुगतान की पुष्टि करें",
+  "rideInProgress": "राइड जारी है",
+  "driverArrivedPickup": "ड्राइवर पिकअप पर पहुँच गया",
+  "driverOnTheWay": "ड्राइवर रास्ते में है",
+  "waitingDriverResponse": "ड्राइवर के जवाब का इंतजार...",
+
+  "rideCompleted": "राइड पूरी हो गई!",
+  "tripCompletedMsg": "आपकी यात्रा सफलतापूर्वक पूरी हो गई है।",
+
+  "searchNearbyDrivers": "⏳ आसपास के ड्राइवरों की तलाश...",
+  "accept": "स्वीकार करें",
+  "paymentPending": "भुगतान लंबित",
+  "completePaymentMsg": "आगे बढ़ने के लिए कृपया अपना भुगतान पूरा करें।",
+
+  "call": "कॉल",
+  "vehicleNumber": "वाहन नंबर: ",
+  "startRidePin": "PIN का उपयोग करके अपनी राइड शुरू करें",
+
+  "pickupFrom": "पिकअप स्थान",
+  "dropTo": "ड्रॉप स्थान",
+  "goToMap": "मैप पर जाएं",
+
+  "completeOnlinePayment": "ऑनलाइन भुगतान पूरा करें",
+  "confirmPayment": "इस राइड के लिए ₹{fare} का भुगतान पुष्टि करें?",
+  "ok": "ठीक है",
+  "tripDetails": "यात्रा विवरण"
 
 }

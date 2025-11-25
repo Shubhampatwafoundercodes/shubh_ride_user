@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:rider_pay/res/app_device.dart';
+import 'package:rider_pay_user/res/app_device.dart';
 
 class AppSizes {
   static SizedBox spaceW(double size) =>

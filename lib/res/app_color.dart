@@ -1,12 +1,12 @@
-import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
 class AppColor {
   // Core Brand Colors
   // static const Color primary = Color(0xFFFFC107);         // Rapido Yellow
-  static const Color primary = Color(0xFFff9933);         // Rapido Yellow
-  static const Color primaryDark = Color(0xFFFFA000);     // Darker yellow
+  static const Color primary = Color(0xFFFFC107);  // Rapido Yellow
+  static const Color primaryDark = Color(0xFFFFA000); // Rapido Dark Yellow
+   // Darker yellow
 
   // Neutrals
   static const Color white = Color(0xFFFFFFFF);           // Pure White

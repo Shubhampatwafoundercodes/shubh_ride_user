@@ -1,12 +1,18 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION"/>
+<!--    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION"/>-->
     <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+<!--    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />-->
+<!--    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />-->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+<!--    <uses-permission android:name="android.permission.WAKE_LOCK" />-->
+<!--    <uses-permission android:name="android.permission.VIBRATE" />-->
+
+
     <queries>
-        <!-- If your app checks for SMS support -->
-        <intent>
+       <intent>
             <action android:name="android.intent.action.VIEW" />
             <data android:scheme="sms" />
         </intent>
@@ -15,7 +21,6 @@
             <action android:name="android.intent.action.VIEW" />
             <data android:scheme="tel" />
         </intent>
-        <!-- If your application checks for inAppBrowserView launch mode support -->
         <intent>
             <action android:name="android.support.customtabs.action.CustomTabsService" />
         </intent>
@@ -25,14 +30,36 @@
         </intent>
     </queries>
 
+    <queries>
+        <package android:name="com.google.android.apps.nbu.paisa.user" />
+        <package android:name="com.phonepe.app" />
+        <package android:name="net.one97.paytm" />
+        <package android:name="com.enabled.mybmt" />
+        <package android:name="com.whatsapp" />
+        <package android:name="com.bhimupi" />
+    </queries>
+
+
     <application
-        android:label="rider_pay"
+        android:usesCleartextTraffic="true"
+        android:label="RiderPay"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+
 
 <!--        <meta-data-->
 <!--            android:name="com.google.android.gms.version"-->
 <!--            android:value="@integer/google_play_services_version" />-->
+<!--        <meta-data-->
+<!--            android:name="com.google.firebase.messaging.default_notification_channel_id"-->
+<!--            android:value="high_importance_channel"/>-->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_channel_id"
+            android:value="app_channel" />
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@mipmap/ic_launcher" />
 
         <meta-data android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyATBUdpLdjn6rjEHIsnah_ZSVr7p5LnyQ4"/>

@@ -1,8 +1,8 @@
-import 'package:rider_pay/view/home/data/model/wallet_data_model.dart';
+import 'package:rider_pay_user/view/home/data/model/wallet_data_model.dart';
 
 abstract class WalletRepo{
 
-  Future<WalletDataModel> getWalletHistoryApi(String userId);
+  Future<GetWalletHistoryModel> getWalletHistoryApi(String userId);
 
 
 }

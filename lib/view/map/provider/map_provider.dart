@@ -1,10 +1,11 @@
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:rider_pay/view/map/data/repositories/location_repository_imp.dart';
-import 'package:rider_pay/view/map/data/repositories/map_repo_imp.dart';
-import 'package:rider_pay/view/map/domain/repositories/location_repo.dart';
-import 'package:rider_pay/view/map/presentation/controller/location_service_notifier.dart';
-import 'package:rider_pay/view/map/presentation/controller/map_controller.dart';
+import 'package:rider_pay_user/view/map/data/repositories/location_repository_imp.dart';
+import 'package:rider_pay_user/view/map/data/repositories/map_repo_imp.dart';
+import 'package:rider_pay_user/view/map/domain/repositories/location_repo.dart';
+import 'package:rider_pay_user/view/map/presentation/controller/location_service_notifier.dart';
+import 'package:rider_pay_user/view/map/presentation/controller/map_controller.dart';
+import 'package:rider_pay_user/view/map/presentation/controller/state/map_state.dart';
 
 import '../presentation/controller/map_notifier_provider.dart';
 

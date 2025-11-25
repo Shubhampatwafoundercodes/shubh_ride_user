@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:rider_pay/generated/assets.dart';
-import 'package:rider_pay/l10n/app_localizations.dart';
-import 'package:rider_pay/main.dart' show screenWidth, screenHeight;
-import 'package:rider_pay/res/app_btn.dart';
-import 'package:rider_pay/res/app_color.dart';
-import 'package:rider_pay/res/app_constant.dart';
-import 'package:rider_pay/res/app_padding.dart';
-import 'package:rider_pay/res/app_size.dart';
-import 'package:rider_pay/res/constant/const_text.dart';
-import 'package:rider_pay/utils/routes/routes_name.dart';
-import 'package:rider_pay/view/widget/help_drop_down_widget.dart';
+import 'package:rider_pay_user/generated/assets.dart';
+import 'package:rider_pay_user/l10n/app_localizations.dart';
+import 'package:rider_pay_user/main.dart' show screenWidth, screenHeight;
+import 'package:rider_pay_user/res/app_btn.dart';
+import 'package:rider_pay_user/res/app_color.dart';
+import 'package:rider_pay_user/res/app_constant.dart';
+import 'package:rider_pay_user/res/app_padding.dart';
+import 'package:rider_pay_user/res/app_size.dart';
+import 'package:rider_pay_user/res/constant/const_text.dart';
+import 'package:rider_pay_user/utils/routes/routes_name.dart';
+import 'package:rider_pay_user/view/widget/help_drop_down_widget.dart';
 
 class WelcomeScreen extends ConsumerWidget {
   const WelcomeScreen({super.key});
@@ -76,14 +76,15 @@ class WelcomeScreen extends ConsumerWidget {
                 Navigator.pushNamed(context, RouteName.login);
               },
             ),
-            DoubleText(
-              firstText: loc.doNotAccount, // localized
-              secondText: loc.signUp, // localized
-              onTap: () {
-                print("Sign Up tapped!");
-              },
-            ),
-            AppSizes.spaceH(25),
+            // DoubleText(
+            //   firstText: loc.doNotAccount, // localized
+            //   tappableText1: loc.signUp, // localized
+            //   onTap1: () {
+            //     Navigator.pushNamed(context, RouteName.register);
+            //
+            //   },
+            // ),
+            AppSizes.spaceH(35),
           ],
         ),
       ),

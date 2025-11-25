@@ -1,11 +1,11 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:rider_pay/view/home/data/model/wallet_data_model.dart';
-import 'package:rider_pay/view/home/domain/repo/wallet_repo.dart';
-import 'package:rider_pay/view/share_pref/user_provider.dart';
+import 'package:rider_pay_user/view/home/data/model/wallet_data_model.dart';
+import 'package:rider_pay_user/view/home/domain/repo/wallet_repo.dart';
+import 'package:rider_pay_user/view/share_pref/user_provider.dart';
 
 class WalletState {
   final bool isLoading;
-  final WalletDataModel? walletData;
+  final GetWalletHistoryModel? walletData;
 
   WalletState({
     required this.isLoading,
@@ -16,7 +16,7 @@ class WalletState {
 
   WalletState copyWith({
     bool? isLoading,
-    WalletDataModel? walletData,
+    GetWalletHistoryModel? walletData,
   }) {
     return WalletState(
       isLoading: isLoading ?? this.isLoading,
@@ -36,12 +36,14 @@ class WalletNotifier extends StateNotifier<WalletState> {
   Future<void> getWalletHistory() async {
     state = state.copyWith(isLoading: true,);
     try {
-      final userId = ref.read(userProvider)?.id;
+      final userId = ref.read(userProvider.notifier).userId.toString();
+      // ignore: unnecessary_null_comparison
       if (userId == null) {
         state = state.copyWith(isLoading: false,);
         return;
       }
       final data = await _repo.getWalletHistoryApi(userId.toString());
+      print(data);
       if(data.code==200){
         state = state.copyWith(isLoading: false, walletData: data);
       }else{
@@ -52,5 +54,6 @@ class WalletNotifier extends StateNotifier<WalletState> {
     }
   }
 
-  double get walletAmount => state.walletData?.data?.wallet ?? 0.0;
+  double get walletAmount => (state.walletData?.data?.wallet ?? 0.0).toDouble();
+
 }

@@ -5,8 +5,8 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:http/http.dart' as http;
-import 'package:rider_pay/helper/network/api_exception.dart';
-import 'package:rider_pay/helper/network/base_api_service.dart';
+import 'package:rider_pay_user/helper/network/api_exception.dart';
+import 'package:rider_pay_user/helper/network/base_api_service.dart';
 
 import '../../view/share_pref/user_provider.dart' show userProvider;
 

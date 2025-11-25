@@ -2,16 +2,16 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:rider_pay/res/app_color.dart';
-import 'package:rider_pay/res/app_constant.dart';
-import 'package:rider_pay/res/app_size.dart';
-import 'package:rider_pay/res/constant/common_network_img.dart';
-import 'package:rider_pay/res/constant/const_text.dart';
-import 'package:rider_pay/res/format/date_time_formater.dart';
-import 'package:rider_pay/view/home/presentation/drawer/my_ride/my_ride_details.dart' show RideDetailsScreen;
-import 'package:rider_pay/view/home/presentation/widget/common_btn_with_title.dart' show CommonBackBtnWithTitle;
-import 'package:rider_pay/view/home/provider/provider.dart';
-import 'package:rider_pay/view/share_pref/user_provider.dart';
+import 'package:rider_pay_user/res/app_color.dart';
+import 'package:rider_pay_user/res/app_constant.dart';
+import 'package:rider_pay_user/res/app_size.dart';
+import 'package:rider_pay_user/res/constant/common_network_img.dart';
+import 'package:rider_pay_user/res/constant/const_text.dart';
+import 'package:rider_pay_user/res/format/date_time_formater.dart';
+import 'package:rider_pay_user/view/home/presentation/drawer/my_ride/my_ride_details.dart' show RideDetailsScreen;
+import 'package:rider_pay_user/view/home/presentation/widget/common_btn_with_title.dart' show CommonBackBtnWithTitle;
+import 'package:rider_pay_user/view/home/provider/provider.dart';
+import 'package:rider_pay_user/view/share_pref/user_provider.dart';
 
 class RideHistoryScreen extends ConsumerStatefulWidget {
   const RideHistoryScreen({super.key});
@@ -25,7 +25,7 @@ class _RideHistoryScreenState extends ConsumerState<RideHistoryScreen> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_){
-      final userId=ref.watch(userProvider)?.id;
+      final userId=ref.watch(userProvider.notifier).userId;
       if(userId !=null){
         ref.read(rideBookingProvider.notifier).rideHistoryApi(userId);
 
@@ -37,6 +37,7 @@ class _RideHistoryScreenState extends ConsumerState<RideHistoryScreen> {
   @override
   Widget build(BuildContext context) {
     final rideState = ref.watch(rideBookingProvider);
+    final rideData= rideState.bookingHistoryModelData?.data?.data??[];
 
     return Scaffold(
       body: SafeArea(
@@ -47,14 +48,13 @@ class _RideHistoryScreenState extends ConsumerState<RideHistoryScreen> {
             Expanded(
               child: rideState.isRideHistoryLoading
                   ? const Center(child: CircularProgressIndicator())
-                  : rideState.bookingHistoryModelData == null ||
-                  rideState.bookingHistoryModelData!.data.isEmpty
+                  :rideData.isEmpty
                   ? const Center(child: Text("No Ride History Found"))
                     : ListView.separated(
                 padding:  EdgeInsets.all(16.0.r),
-                itemCount: rideState.bookingHistoryModelData!.data.length,
+                itemCount:rideData.length,
                 itemBuilder: (context, index) {
-                  final ride = rideState.bookingHistoryModelData!.data[index];
+                  final ride = rideData[index];
                   final isCancelled = ride.status?.toLowerCase() == "cancelled";
                   return InkWell(
                     onTap:() {
@@ -89,16 +89,15 @@ class _RideHistoryScreenState extends ConsumerState<RideHistoryScreen> {
                                   AppSizes.spaceH(4),
                                   ConstText(
                                     text:
-                                    DateTimeFormat.formatFullDateTime(ride.bookingTime.toString()??""),
+                                    DateTimeFormat.formatFullDateTime(ride.bookingTime.toString()),
                                     fontSize: AppConstant.fontSizeZero,
                                     color: context.hintTextColor,
                                   ),
                                   ConstText(
                                     text: ride.status.toString(),
                                     fontSize: AppConstant.fontSizeZero,
-                                    color: isCancelled
-                                        ? Colors.red
-                                        : context.hintTextColor,
+                                    color: _getStatusColor(ride.status),
+
                                   ),
                                 ],
                               ),
@@ -120,4 +119,19 @@ class _RideHistoryScreenState extends ConsumerState<RideHistoryScreen> {
       ),
     );
   }
+  Color _getStatusColor(String? status) {
+    switch (status?.toLowerCase()) {
+      case "completed":
+        return Colors.green;
+      case "cancelled":
+        return Colors.red;
+      case "pending":
+      case "processing":
+      case "in-progress":
+        return Colors.orange;
+      default:
+        return Colors.grey;
+    }
+  }
+
 }

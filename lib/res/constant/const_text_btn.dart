@@ -1,8 +1,8 @@
 
 import 'package:flutter/material.dart';
-import 'package:rider_pay/res/app_color.dart';
-import 'package:rider_pay/res/app_constant.dart';
-import 'package:rider_pay/res/constant/const_text.dart';
+import 'package:rider_pay_user/res/app_color.dart';
+import 'package:rider_pay_user/res/app_constant.dart';
+import 'package:rider_pay_user/res/constant/const_text.dart';
 
 
 class ConstTextBtn extends StatelessWidget {

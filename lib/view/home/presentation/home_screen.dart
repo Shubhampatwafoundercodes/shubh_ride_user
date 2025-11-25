@@ -2,26 +2,24 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:rider_pay/generated/assets.dart';
-import 'package:rider_pay/l10n/app_localizations.dart';
-import 'package:rider_pay/main.dart';
-import 'package:rider_pay/res/app_border.dart';
-import 'package:rider_pay/res/app_color.dart';
-import 'package:rider_pay/res/app_constant.dart';
-import 'package:rider_pay/res/app_padding.dart';
-import 'package:rider_pay/res/app_size.dart';
-import 'package:rider_pay/res/constant/common_bottom_sheet.dart';
-import 'package:rider_pay/res/constant/const_text.dart';
-import 'package:rider_pay/res/constant/custom_image_slider.dart';
-import 'package:rider_pay/utils/routes/routes_name.dart';
-import 'package:rider_pay/view/home/presentation/widget/address_list_widget.dart';
-import 'package:rider_pay/view/home/presentation/widget/vehicle_type_widget.dart';
-import 'package:rider_pay/view/home/provider/provider.dart';
-import 'package:rider_pay/view/map/presentation/controller/map_controller.dart';
-import 'package:rider_pay/view/map/presentation/search_location_screen.dart';
-import 'package:rider_pay/view/map/provider/map_provider.dart';
-import 'package:rider_pay/view/share_pref/recent_place_provider.dart';
-import 'package:rider_pay/view/soket.dart';
+import 'package:rider_pay_user/generated/assets.dart';
+import 'package:rider_pay_user/l10n/app_localizations.dart';
+import 'package:rider_pay_user/main.dart';
+import 'package:rider_pay_user/res/app_border.dart';
+import 'package:rider_pay_user/res/app_color.dart';
+import 'package:rider_pay_user/res/app_constant.dart';
+import 'package:rider_pay_user/res/app_padding.dart';
+import 'package:rider_pay_user/res/app_size.dart';
+import 'package:rider_pay_user/res/constant/const_text.dart';
+import 'package:rider_pay_user/res/constant/custom_image_slider.dart';
+import 'package:rider_pay_user/utils/routes/routes_name.dart';
+import 'package:rider_pay_user/view/home/presentation/widget/address_list_widget.dart';
+import 'package:rider_pay_user/view/home/presentation/widget/vehicle_type_widget.dart';
+import 'package:rider_pay_user/view/home/provider/provider.dart';
+import 'package:rider_pay_user/view/map/presentation/controller/check_zone_notifer.dart';
+import 'package:rider_pay_user/view/map/presentation/controller/state/map_state.dart';
+import 'package:rider_pay_user/view/map/provider/map_provider.dart';
+import 'package:rider_pay_user/view/share_pref/recent_place_provider.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
@@ -31,25 +29,27 @@ class HomeScreen extends ConsumerStatefulWidget {
 }
 
 class _HomeScreenState extends ConsumerState<HomeScreen> {
-  // final List<Map<String, dynamic>> exploreItems = [
-  //   {"icon": Assets.iconAutoIc, "label": "Shared Auto"},
-  //   {"icon": Assets.iconBikeIc, "label": "Bike"},
-  //   {"icon": Assets.iconCarIc, "label": "Auto"},
-  //   {"icon": Assets.iconAutoIc, "label": "Cab Economy"},
-  //   {"icon": Assets.iconCarIc, "label": "Cab Premium"},
-  //   {"icon": Assets.iconBikeIc, "label": "Bus"},
-  // ];
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_){
-      // SocketService().connect();
+    WidgetsBinding.instance.addPostFrameCallback((_)async{
       ref.read(addressTypeNotifierProvider.notifier).loadAddressTypes();
+      ref.read(mapControllerProvider.notifier).fetchCurrentLocation(type: LocationType.pickup);
       ref.read(profileProvider.notifier).getProfile();
       ref.read(vehicleTypeProvider.notifier).fetchVehicleTypes();
       ref.read(walletProvider.notifier).getWalletHistory();
       ref.read(recentPlacesProvider.notifier).load();
-
+      final bookingNotifier = ref.read(rideBookingProvider.notifier);
+      final hasPending = await bookingNotifier.setupPendingRideAndDrawRoute();
+      if (hasPending && mounted) {
+        Future.delayed(const Duration(milliseconds: 300), () {
+          if (mounted) {
+            Navigator.pushNamedAndRemoveUntil(context, RouteName.mapScreen,(routes)=>false);
+          }
+        });
+      } else {
+        debugPrint("🏠 No active ride found — staying on Home");
+      }
 
     });
   }
@@ -57,15 +57,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   Widget build(BuildContext context) {
     final loc = AppLocalizations.of(context)!;
     final mapConState= ref.watch(mapControllerProvider);
-
-    // ref.listen<MapState>(mapControllerProvider, (prev, next) {
-    //   if (next.shouldNavigate) {
-    //     ref.read(mapControllerProvider.notifier).resetNavigationFlag();
-    //     Navigator.pushNamed(context, RouteName.mapScreen);
-    //   }
-    // });
-
-
     return Stack(
       alignment: AlignmentGeometry.center,
       children: [
@@ -127,7 +118,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                        /// vehicle type Widget
                         GestureDetector(
                             onTap: (){
-                              // Navigator.pushNamed(context, RouteName.s)
                             },
                             child: VehicleTypeWidget()),
 
@@ -136,8 +126,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 
                         GestureDetector(
                           onTap: (){
-                            print("sdffffffffff");
-                            // SocketService().joinUser("12", "2830.3993", "525356253");
+
                           },
                           child: Align(
                             alignment: Alignment.topLeft,
@@ -159,9 +148,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                             final appInfoState = ref.watch(appInfoNotifierProvider);
                             final homeSliders = ref.watch(appInfoNotifierProvider.notifier).homeSliders;
                             if (appInfoState.isLoading) {
-                              return SizedBox(
-                                height: screenHeight * 0.2,
-                                child: const Center(child: CircularProgressIndicator()),
+                              return SizedBox.shrink(
+                                // height: screenHeight * 0.2,
+                                // child: const Center(child: CircularProgressIndicator()),
                               );
                             }
                             if (homeSliders.isEmpty) {
@@ -196,7 +185,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                               Padding(
                                 padding:  EdgeInsets.only(top: 55.h),
                                 child: ConstText(
-                                  text: "#goShubhRide",
+                                  text: "#goRiderPay",
                                   fontSize:40.sp,
                                   fontWeight: AppConstant.extraBold,
                                   color: context.greyMedium,
@@ -224,46 +213,12 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             ),
           ),
         ),
-        if(mapConState.isMapProcessing) FullScreenLoader()
+        if(mapConState.isMapProcessing || mapConState.isLocationLoading || ref.watch(checkZoneProvider).isLoading) FullScreenLoader()
       ],
     );
 
   }
 
-  /// BottomSheet for Explore (View All)
-  // void _showExploreBottomSheet() {
-  //   showModalBottomSheet(
-  //     context: context,
-  //     backgroundColor: Colors.transparent,
-  //     // isDismissible: false,
-  //     // enableDrag: false,
-  //     builder: (context) {
-  //       return CommonBottomSheet(
-  //         title: "All Services",
-  //         // isDismissible: false,
-  //         // showCloseButton: true,
-  //         content: SingleChildScrollView(
-  //           child: Center(
-  //             child: Wrap(
-  //               spacing: 10.w,
-  //               runSpacing: 20.h,
-  //               alignment: WrapAlignment.center,
-  //               children: List.generate(
-  //                 exploreItems.length,
-  //                     (index) => ExploreItemWidget(
-  //                   item: exploreItems[index],
-  //                   itemWidth: screenWidth * 0.2,
-  //                   itemHeight: screenHeight * 0.09,
-  //                 ),
-  //               ),
-  //             ),
-  //           ),
-  //         ),
-  //       );
-  //     },
-  //   );
-  //
-  // }
 }
 
 
@@ -277,8 +232,8 @@ class FullScreenLoader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.black26, // dimmed background
-      child: const Center(
-        child: CircularProgressIndicator(color: AppColor.primary),
+      child:  Center(
+        child: CircularProgressIndicator(color:context.primary),
       ),
     );
   }

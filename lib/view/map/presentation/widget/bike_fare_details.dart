@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:rider_pay/generated/assets.dart';
-import 'package:rider_pay/res/app_btn.dart' show AppBtn;
-import 'package:rider_pay/res/app_color.dart' show AppColor, AppColorsExt;
-import 'package:rider_pay/res/app_constant.dart';
-import 'package:rider_pay/res/app_size.dart';
-import 'package:rider_pay/res/constant/common_bottom_sheet.dart';
-import 'package:rider_pay/res/constant/const_text.dart';
+import 'package:rider_pay_user/generated/assets.dart';
+import 'package:rider_pay_user/res/app_btn.dart' show AppBtn;
+// ignore: unused_shown_name
+import 'package:rider_pay_user/res/app_color.dart' show AppColor, AppColorsExt;
+import 'package:rider_pay_user/res/app_constant.dart';
+import 'package:rider_pay_user/res/app_padding.dart';
+import 'package:rider_pay_user/res/app_size.dart';
+// ignore: unused_import
+import 'package:rider_pay_user/res/constant/common_bottom_sheet.dart';
+import 'package:rider_pay_user/res/constant/const_text.dart';
 
 class BikeFareDetails extends StatelessWidget {
-  final String? totalAmount;
-  const BikeFareDetails({super.key,  this.totalAmount});
+  final String totalAmount;
+  const BikeFareDetails({super.key, required this.totalAmount});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +22,8 @@ class BikeFareDetails extends StatelessWidget {
           color: context.popupBackground,
           borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
         ),
-        padding: const EdgeInsets.all(16),
+
+        padding:AppPadding.screenPadding,
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -40,12 +44,12 @@ class BikeFareDetails extends StatelessWidget {
               AppSizes.spaceH(20),
 
               // Total Fare
-              _fareRow(context, "Total Estimate fare price including taxes", "₹${totalAmount??"0"}",
+              _fareRow(context, "Total Estimate fare price including taxes", "₹$totalAmount",
                   isLarge: true),
 
               Divider(thickness: 0.3, color: context.greyMedium),
 
-              _fareRow(context, "Ride Fare", "₹${totalAmount??"0"}"),
+              _fareRow(context, "Ride Fare", "₹$totalAmount"),
               // AppSizes.spaceH(12),
               // _fareRow(context, "Surcharge", "₹40"),
               // AppSizes.spaceH(12),

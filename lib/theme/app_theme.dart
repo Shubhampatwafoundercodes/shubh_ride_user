@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rider_pay/res/app_color.dart';
+import 'package:rider_pay_user/res/app_color.dart';
 
 class AppTheme {
   /// Light Theme

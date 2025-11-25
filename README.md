@@ -1,4 +1,4 @@
-# rider_pay
+# rider_pay_user
 
 A new Flutter project.
 

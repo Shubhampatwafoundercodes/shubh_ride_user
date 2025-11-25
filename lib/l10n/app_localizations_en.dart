@@ -114,7 +114,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get explore => 'Explore';
 
   @override
-  String get goPlacesWithRiderPay => 'Go Places with Rider Pay';
+  String get goPlacesWithRiderPay => 'Go Places';
 
   @override
   String get selectTheme => 'Select Theme';
@@ -328,4 +328,112 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get cancelRefund => 'Cancel & Refund';
+
+  @override
+  String get driver => 'Driver?';
+
+  @override
+  String get setting => 'Setting';
+
+  @override
+  String get getEarning => 'Get Earning';
+
+  @override
+  String get drop => 'Drop';
+
+  @override
+  String get currentLocation => 'Current Location';
+
+  @override
+  String get dropLocation => 'Drop Location';
+
+  @override
+  String get cashbackMsg => 'You get cashback complete your ride cashback!';
+
+  @override
+  String get noVehicle => 'No vehicles available';
+
+  @override
+  String get bookRide => 'Book Ride';
+
+  @override
+  String get cash => 'Cash';
+
+  @override
+  String get online => 'Online';
+
+  @override
+  String get searchingDriver => 'Searching for driver...';
+
+  @override
+  String get driverFound => 'Driver(s) found';
+
+  @override
+  String get pleaseConfirmPayment => 'Please confirm payment';
+
+  @override
+  String get rideInProgress => 'Ride in progress';
+
+  @override
+  String get driverArrivedPickup => 'Driver arrived at pickup';
+
+  @override
+  String get driverOnTheWay => 'Driver on the way';
+
+  @override
+  String get waitingDriverResponse => 'Waiting for driver response';
+
+  @override
+  String get rideCompleted => 'Ride Completed!';
+
+  @override
+  String get tripCompletedMsg => 'Your trip has been completed successfully.';
+
+  @override
+  String get searchNearbyDrivers => '⏳ Searching for nearby drivers...';
+
+  @override
+  String get accept => 'Accept';
+
+  @override
+  String get paymentPending => 'Payment Pending';
+
+  @override
+  String get completePaymentMsg => 'Please complete your payment to continue.';
+
+  @override
+  String get call => 'Call';
+
+  @override
+  String get vehicleNumber => 'Vehicle Number: ';
+
+  @override
+  String get startRidePin => 'Start your ride using PIN';
+
+  @override
+  String get pickupFrom => 'Pickup From';
+
+  @override
+  String get dropTo => 'Drop To';
+
+  @override
+  String get goToMap => 'Go to Map';
+
+  @override
+  String get completeOnlinePayment => 'Complete Online Payment';
+
+  @override
+  String get ok => 'OK';
+
+  @override
+  String get tripDetails => 'Trip Details';
+
+  @override
+  String get chatInterfaceWillBeImplementedHere => 'Chat interface will be implemented here';
+
+  @override
+  String get confirmPaymentOf => 'Confirm payment of';
+
+  @override
+  String get forThisRide => 'for this ride?';
 }
